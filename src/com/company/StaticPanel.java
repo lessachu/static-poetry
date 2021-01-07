@@ -12,19 +12,17 @@ import java.awt.event.ActionListener;
 
 public class StaticPanel extends JPanel {
 
-    public static final int BIG = 2;
-    public static final int SMALL = 1;
     public static final int GRAYSCALE = 1;
     public static final int COLOR = 0;
 
-    private String seed;
-    private int mode;
-    private int size;  // size
-    private int zoom;
+    private final String seed;
+    private final int mode;
+    private final int size;  // size
+    private final int zoom;
     private int what_we_consume;  //  stutter_limit
     private int what_we_produce;  // stutter_count
-    private Random rand = new Random();
-    private Zoomie zoomies[];
+    private final Random rand = new Random();
+    private final Zoomie zoomies[];
 
     public StaticPanel(String seed, int mode, int size, int zoom) {
         this.seed = seed;
@@ -83,7 +81,6 @@ public class StaticPanel extends JPanel {
                     return zoomies[i].color;
                 }
             }
-            red = green = blue =  this.rand.nextInt( 255);
         }
 
         if (this.mode == COLOR) {
@@ -172,10 +169,6 @@ public class StaticPanel extends JPanel {
            return (value % size) == comp;
        }
 
-       public boolean less(int val) {
-            return (value < val);
-       }
-
        public void am(int newval) {
            value = newval;
        }
@@ -199,10 +192,6 @@ public class StaticPanel extends JPanel {
 
    public int strict() {
        return getHeight();
-   }
-
-   public boolean withinOurDays() {
-       return what_we_produce < what_we_consume;
    }
 
     private int what_is_woven_from(human y, human x) {

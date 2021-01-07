@@ -16,14 +16,13 @@ public class StaticPanel extends JPanel {
     public static final int SMALL = 1;
     public static final int GRAYSCALE = 1;
     public static final int COLOR = 0;
-    private static final int c_num_zoomies = 100;
 
     private String seed;
     private int mode;
-    private int size;
+    private int size;  // size
     private int zoom;
-    private int stutter;
-    private int stutter_count;
+    private int what_we_consume;  //  stutter_limit
+    private int what_we_produce;  // stutter_count
     private Random rand = new Random();
     private Zoomie zoomies[];
 
@@ -32,8 +31,8 @@ public class StaticPanel extends JPanel {
         this.mode = mode;
         this.size = size;
         this.zoom = zoom;
-        this.stutter = rand.nextInt(30) + 25;
-        this.stutter_count = 0;
+        this.what_we_consume = rand.nextInt(30) + 25;
+        this.what_we_produce = 0;
 
         /* set up zoomies */
         zoomies = new Zoomie[this.zoom];
@@ -51,11 +50,11 @@ public class StaticPanel extends JPanel {
         Timer timer = new Timer(60, new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                stutter_count++;
-                if (stutter_count > stutter) {
-                    if (stutter_count > stutter + 1) {
-                        stutter_count = 0;
-                        stutter = rand.nextInt(200) + 25;
+                what_we_produce++;
+                if (what_we_produce > what_we_consume) {
+                    if (what_we_produce > what_we_consume + 1) {
+                        what_we_produce = 0;
+                        what_we_consume = rand.nextInt(200) + 25;
                     }
                 }
                 repaint();
@@ -65,13 +64,10 @@ public class StaticPanel extends JPanel {
     }
 
     private int GetRandomColor() {
-        int red = 0;
-        int green = 0;
-        int blue = 0;
 
-        red = this.rand.nextInt(255);
-        green = this.rand.nextInt(255);
-        blue = this.rand.nextInt(255);
+        int red = this.rand.nextInt(255);
+        int green = this.rand.nextInt(255);
+        int blue = this.rand.nextInt(255);
         return ((red&0x0ff)<<16)|((green&0x0ff)<<8)|(blue&0x0ff);
     }
 
@@ -81,6 +77,7 @@ public class StaticPanel extends JPanel {
         int blue = 0;
 
         if (this.zoom > 0) {
+
             for(int i = 0; i < this.zoom; i++) {
                 if (zoomies[i].x == x && zoomies[i].y == y) {
                     return zoomies[i].color;
@@ -158,7 +155,7 @@ public class StaticPanel extends JPanel {
  */
 
    private static final int nothing = 0;
-   private static final int black = 0;
+   private static final int here = 0;
 
    private class human {
        public int value;
@@ -171,8 +168,8 @@ public class StaticPanel extends JPanel {
            return (value < val);
        }
 
-       public int mod(int val) {
-           return (value % val);
+       public boolean touch(int comp) {
+           return (value % size) == comp;
        }
 
        public boolean less(int val) {
@@ -204,12 +201,20 @@ public class StaticPanel extends JPanel {
        return getHeight();
    }
 
+   public boolean withinOurDays() {
+       return what_we_produce < what_we_consume;
+   }
+
+    private int what_is_woven_from(human y, human x) {
+        return GetColor(x.value, y.value);
+    }
+
     private World snowCrash() {
         int boundaries = hard();
         int limits = strict();
-        int color = black;
+        int change = nothing;
 
-        World system = new World(boundaries, limits);
+        World the_system = new World(boundaries, limits);
 
         human truth = new human();
         truth.is(boundaries);
@@ -223,30 +228,25 @@ public class StaticPanel extends JPanel {
             you.are(nothing);
             while(you.focusOn(limits)) {
 
-                if (stutter_count < stutter) {
-                    if (i.mod(this.size) == 0) {
-                        if (you.mod(this.size) == 0) {
-                            color = GetColor(i.value, you.value);
-                        } else {
-                            color = system.getRGB(i.value, you.value - 1);
-                        }
-                    } else {
-                        color = system.getRGB(i.value - 1, you.value);
-                    }
+                if (what_we_consume > what_we_produce) {
+
+                    if (i.touch(nothing)) {
+                        if (you.touch(nothing)) {
+                            change = what_is_woven_from(you, i);
+
+                        } else { change = the_system.creates_change_from(i.value, you.value - 1); }
+                    } else { change = the_system.creates_change_from(i.value - 1, you.value); }
 
                 } else {
-                    // glitch
-                    color = 0;
+                    change = here;
                 }
 
-                system.setRGB(i.value, you.value, color);
-
+                the_system.is_moved_by(i.value, you.value, change);
                 you.exist();
             }
             i.exist();
         }
-        return system;
-
+        return the_system;
     }
 
 

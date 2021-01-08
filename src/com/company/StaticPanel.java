@@ -98,15 +98,15 @@ public class StaticPanel extends JPanel {
         return ((red&0x0ff)<<16)|((green&0x0ff)<<8)|(blue&0x0ff);
     }
 
-    public void drawCenteredString(Graphics g, String text, Rectangle rect, Font font) {
+    public void drawCenteredString(Graphics g, String text, Rectangle rect) {
         // Get the FontMetrics
-        FontMetrics metrics = g.getFontMetrics(font);
+        FontMetrics metrics = g.getFontMetrics(this.font);
         // Determine the X coordinate for the text
         int x = rect.x + (rect.width - metrics.stringWidth(text)) / 2;
         // Determine the Y coordinate for the text (note we add the ascent, as in java 2d 0 is top of the screen)
         int y = rect.y + ((rect.height - metrics.getHeight()) / 2) + metrics.getAscent();
         // Set the font
-        g.setFont(font);
+        g.setFont(this.font);
         // Draw the String
         g.drawString(text, x, y);
     }
@@ -126,7 +126,7 @@ public class StaticPanel extends JPanel {
 
         g2.setColor(Color.BLACK);
         Rectangle rect = new Rectangle(width, height);
-        drawCenteredString(g2, seed, rect, font);
+        drawCenteredString(g2, seed, rect);
 
       //
 

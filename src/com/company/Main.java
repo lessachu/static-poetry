@@ -47,7 +47,7 @@ public class Main {
        }
 
         if (argsMap.get("--font_size") != null) {
-            zoom = Integer.parseInt(argsMap.get("--font_size"));
+            font_size = Integer.parseInt(argsMap.get("--font_size"));
         }
 
         SwingUtilities.invokeLater(new MyRunnable(seed, mode, size, zoom, font_size));

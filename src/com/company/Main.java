@@ -1,9 +1,6 @@
 package com.company;
 
 import javax.swing.SwingUtilities;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import javax.swing.JFrame;
 import java.util.List;
 import java.util.Arrays;
 import java.util.Map;

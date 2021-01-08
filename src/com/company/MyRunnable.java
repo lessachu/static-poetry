@@ -1,11 +1,9 @@
 package com.company;
 
-import javax.swing.SwingUtilities;
-import java.awt.BorderLayout;
-import java.awt.Color;
+
+import java.awt.*;
 import javax.swing.JFrame;
-import java.util.List;
-import java.util.Arrays;
+import java.awt.Toolkit;
 
 public class MyRunnable implements Runnable {
     private int size;
@@ -23,7 +21,8 @@ public class MyRunnable implements Runnable {
         var panel = new StaticPanel("test", this.mode , this.size, this.zoom);
         panel.setBackground(Color.GREEN.darker());
         var frame = new JFrame("");
-        frame.setSize(900, 800);
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        frame.setSize(d.width,d.height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(panel, BorderLayout.CENTER);
         frame.setVisible(true);

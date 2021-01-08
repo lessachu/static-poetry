@@ -144,12 +144,8 @@ public class StaticPanel extends JPanel {
 
         for ( int rc = 0; rc < width; rc++ ) {
             for ( int cc = 0; cc < height; cc++ ) {
-
-//                    int per_pixel = this.rand.nextInt(what_we_consume);
-              //
-             //   System.out.println("Per pixel: " + per_pixel  + " Stutter cur: " + what_we_produce);
-
-/*                    if ((rc % this.size) == 0) {
+                if(this.rand.nextInt(what_we_consume) < what_we_produce){
+                if ((rc % this.size) == 0) {
                         if ((cc % this.size) == 0) {
                             color = GetColor(rc, cc);
                         } else {
@@ -157,15 +153,17 @@ public class StaticPanel extends JPanel {
                         }
                     } else {
                         color = img.getRGB(rc - 1, cc);
-                    }*/
-              //  }
-          //     if( rc % 10 == 0) {
+                    }
+
+                    img.setRGB(rc, cc, color);
+                }
+         /*
                 if(this.rand.nextInt(what_we_consume) < what_we_produce){
                     color = this.rand.nextInt(255);
                     g2.setColor(new Color(color, color, color));
-                    g2.drawLine(rc, cc, rc, cc);
-                }
-          //      img.setRGB(rc, cc, color);
+                    g2.drawLine(rc, cc, rc, cc);*
+                }*/
+
            }
         }
 

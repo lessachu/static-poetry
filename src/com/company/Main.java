@@ -15,6 +15,7 @@ public class Main {
         int mode = StaticPanel.GRAYSCALE;
         int zoom = 0;
         int font_size = 250;
+        int speed = 60;
 
         List<String> argList = Arrays.asList(args);
 
@@ -49,8 +50,11 @@ public class Main {
         if (argsMap.get("--font_size") != null) {
             font_size = Integer.parseInt(argsMap.get("--font_size"));
         }
+        if (argsMap.get("--speed") != null) {
+            speed = Integer.parseInt(argsMap.get("--speed"));
+        }
 
-        SwingUtilities.invokeLater(new MyRunnable(seed, mode, size, zoom, font_size));
+        SwingUtilities.invokeLater(new MyRunnable(seed, mode, size, zoom, font_size, speed));
 
     }
 }

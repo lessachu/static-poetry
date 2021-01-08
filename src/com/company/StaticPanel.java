@@ -30,7 +30,7 @@ public class StaticPanel extends JPanel {
     private final Random rand = new Random();
     private final Zoomie zoomies[];
 
-    public StaticPanel(String seed, int mode, int size, int zoom, int font_size) {
+    public StaticPanel(String seed, int mode, int size, int zoom, int font_size, int speed) {
         this.seed = seed;
         this.mode = mode;
         this.size = size;
@@ -52,7 +52,7 @@ public class StaticPanel extends JPanel {
         }
 
 
-        Timer timer = new Timer(20, new ActionListener(){
+        Timer timer = new Timer(speed, new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 what_we_produce++;

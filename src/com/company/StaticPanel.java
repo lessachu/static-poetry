@@ -11,12 +11,15 @@ import java.awt.event.ActionListener;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Rectangle;
+import java.awt.Graphics2D;
+import java.awt.AlphaComposite;
 
 
 public class StaticPanel extends JPanel {
 
     public static final int GRAYSCALE = 1;
     public static final int COLOR = 0;
+    public static Font font;
 
     private final String seed;
     private final int mode;
@@ -27,11 +30,12 @@ public class StaticPanel extends JPanel {
     private final Random rand = new Random();
     private final Zoomie zoomies[];
 
-    public StaticPanel(String seed, int mode, int size, int zoom) {
+    public StaticPanel(String seed, int mode, int size, int zoom, int font_size) {
         this.seed = seed;
         this.mode = mode;
         this.size = size;
         this.zoom = zoom;
+        this.font = new Font("monospaced", Font.PLAIN, font_size);
         this.what_we_consume = rand.nextInt(30) + 25;
         this.what_we_produce = 0;
 
@@ -48,7 +52,7 @@ public class StaticPanel extends JPanel {
         }
 
 
-        Timer timer = new Timer(60, new ActionListener(){
+        Timer timer = new Timer(20, new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 what_we_produce++;
@@ -113,31 +117,60 @@ public class StaticPanel extends JPanel {
         int height = getHeight();
         int color = 0;
 
-        BufferedImage img = snowCrash();
+    //    BufferedImage img = snowCrash();
+        BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB );
+        Graphics g2 = img.getGraphics();
 
-     /*   BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB );
+        g2.setColor(Color.WHITE);
+        g2.fillRect(0,0, width, height);
+
+        g2.setColor(Color.BLACK);
+        Rectangle rect = new Rectangle(width, height);
+        drawCenteredString(g2, seed, rect, font);
+
+      //
+
+
+    //   int odds = what_we_consume / what_we_produce;
+    //   System.out.println("Stutter lim: " + what_we_consume + " Stutter cur: " + what_we_produce + " Odds are: " + odds);
+
+        //Graphics2D g2 = (Graphics2D)g;
+        //clear
+      //  g2.setComposite(AlphaComposite.getInstance(AlphaComposite.CLEAR));
+       // g2.fillRect(0,0,width,height);
+        // reset composite
+       // g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
+
 
         for ( int rc = 0; rc < width; rc++ ) {
             for ( int cc = 0; cc < height; cc++ ) {
-                if (stutter_count > stutter) {
-                    color = 0;
-                } else {
-                    if ((rc % this.size) == 0) {
+
+//                    int per_pixel = this.rand.nextInt(what_we_consume);
+              //
+             //   System.out.println("Per pixel: " + per_pixel  + " Stutter cur: " + what_we_produce);
+
+/*                    if ((rc % this.size) == 0) {
                         if ((cc % this.size) == 0) {
                             color = GetColor(rc, cc);
                         } else {
-                            color = img.getRGB(rc , cc - 1);
+                            color = img.getRGB(rc, cc - 1);
                         }
                     } else {
                         color = img.getRGB(rc - 1, cc);
-                    }
-
+                    }*/
+              //  }
+          //     if( rc % 10 == 0) {
+                if(this.rand.nextInt(what_we_consume) < what_we_produce){
+                    color = this.rand.nextInt(255);
+                    g2.setColor(new Color(color, color, color));
+                    g2.drawLine(rc, cc, rc, cc);
                 }
-                img.setRGB(rc, cc, color);
-            }
-        } */
+          //      img.setRGB(rc, cc, color);
+           }
+        }
 
-        for (int i = 0; i < this.zoom; i++) {
+
+     /*   for (int i = 0; i < this.zoom; i++) {
             zoomies[i].x += zoomies[i].dx;
             zoomies[i].y += zoomies[i].dy;
 
@@ -158,7 +191,12 @@ public class StaticPanel extends JPanel {
                 zoomies[i].dy = -1 * zoomies[i].dy;
             }
 
-        }
+        }*/
+
+      /*  draw image here if we want it as the background to the word
+      g.drawImage(img, 0, 0, Color.BLUE, null);*/
+
+
 
         g.drawImage(img, 0, 0, Color.BLUE, null);
 

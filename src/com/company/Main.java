@@ -13,11 +13,9 @@ public class Main {
         String seed = "snowcrash";
         int size = 4;
         int mode = StaticPanel.GRAYSCALE;
-        int zoom = 0;
+        int pause = 20;
         int font_size = 250;
         int speed = 60;
-
-        List<String> argList = Arrays.asList(args);
 
         Map<String, String> argsMap = new HashMap<>();
         for (String arg: args) {
@@ -43,8 +41,8 @@ public class Main {
            mode = StaticPanel.COLOR;
        }
 
-       if (argsMap.get("--zoom") != null) {
-            zoom = Integer.parseInt(argsMap.get("--zoom"));
+       if (argsMap.get("--pause") != null) {
+            pause = Integer.parseInt(argsMap.get("--pause"));
        }
 
         if (argsMap.get("--font_size") != null) {
@@ -54,7 +52,7 @@ public class Main {
             speed = Integer.parseInt(argsMap.get("--speed"));
         }
 
-        SwingUtilities.invokeLater(new MyRunnable(seed, mode, size, zoom, font_size, speed));
+        SwingUtilities.invokeLater(new MyRunnable(seed, mode, size, pause, font_size, speed));
 
     }
 }

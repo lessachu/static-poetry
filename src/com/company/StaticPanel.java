@@ -11,8 +11,6 @@ import java.awt.event.ActionListener;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Rectangle;
-import java.awt.Graphics2D;
-import java.awt.AlphaComposite;
 
 
 public class StaticPanel extends JPanel {
@@ -24,32 +22,19 @@ public class StaticPanel extends JPanel {
     private final String seed;
     private final int mode;
     private final int size;  // size
-    private final int zoom;
+    private final int pause;
     private int what_we_consume;  //  stutter_limit
     private int what_we_produce;  // stutter_count
     private final Random rand = new Random();
-    private final Zoomie zoomies[];
 
-    public StaticPanel(String seed, int mode, int size, int zoom, int font_size, int speed) {
+    public StaticPanel(String seed, int mode, int size, int pause, int font_size, int speed) {
         this.seed = seed;
         this.mode = mode;
         this.size = size;
-        this.zoom = zoom;
+        this.pause = pause;
         this.font = new Font("monospaced", Font.PLAIN, font_size);
         this.what_we_consume = rand.nextInt(30) + 25;
         this.what_we_produce = 0;
-
-        /* set up zoomies */
-        zoomies = new Zoomie[this.zoom];
-
-        for (int i = 0; i < this.zoom; i++) {
-            zoomies[i] = new Zoomie();
-            zoomies[i].color = ((200&0x0ff)<<16)|((100&0x0ff)<<8)|(100&0x0ff);
-            zoomies[i].x = 0;
-            zoomies[i].y = 0;
-            zoomies[i].dx = i;
-            zoomies[i].dy = i*2;
-        }
 
 
         Timer timer = new Timer(speed, new ActionListener(){
@@ -57,7 +42,7 @@ public class StaticPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 what_we_produce++;
                 if (what_we_produce > what_we_consume) {
-                    if (what_we_produce > what_we_consume + 1) {
+                    if (what_we_produce > what_we_consume + pause) {
                         what_we_produce = 0;
                         what_we_consume = rand.nextInt(200) + 25;
                     }
@@ -80,15 +65,6 @@ public class StaticPanel extends JPanel {
         int red = 0;
         int green = 0;
         int blue = 0;
-
-        if (this.zoom > 0) {
-
-            for(int i = 0; i < this.zoom; i++) {
-                if (zoomies[i].x == x && zoomies[i].y == y) {
-                    return zoomies[i].color;
-                }
-            }
-        }
 
         if (this.mode == COLOR) {
             return GetRandomColor();
@@ -128,20 +104,6 @@ public class StaticPanel extends JPanel {
         Rectangle rect = new Rectangle(width, height);
         drawCenteredString(g2, seed, rect);
 
-      //
-
-
-    //   int odds = what_we_consume / what_we_produce;
-    //   System.out.println("Stutter lim: " + what_we_consume + " Stutter cur: " + what_we_produce + " Odds are: " + odds);
-
-        //Graphics2D g2 = (Graphics2D)g;
-        //clear
-      //  g2.setComposite(AlphaComposite.getInstance(AlphaComposite.CLEAR));
-       // g2.fillRect(0,0,width,height);
-        // reset composite
-       // g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
-
-
         for ( int rc = 0; rc < width; rc++ ) {
             for ( int cc = 0; cc < height; cc++ ) {
                 if(this.rand.nextInt(what_we_consume) < what_we_produce){
@@ -157,45 +119,8 @@ public class StaticPanel extends JPanel {
 
                     img.setRGB(rc, cc, color);
                 }
-         /*
-                if(this.rand.nextInt(what_we_consume) < what_we_produce){
-                    color = this.rand.nextInt(255);
-                    g2.setColor(new Color(color, color, color));
-                    g2.drawLine(rc, cc, rc, cc);*
-                }*/
-
            }
         }
-
-
-     /*   for (int i = 0; i < this.zoom; i++) {
-            zoomies[i].x += zoomies[i].dx;
-            zoomies[i].y += zoomies[i].dy;
-
-            if(zoomies[i].x < 0) {
-                zoomies[i].x = 0;
-                zoomies[i].dx = -1 * zoomies[i].dx;
-            }
-            if (zoomies[i].x > width) {
-                zoomies[i].x = width;
-                zoomies[i].dx = -1 * zoomies[i].dx;
-            }
-            if(zoomies[i].y < 0) {
-                zoomies[i].y = 0;
-                zoomies[i].dy = -1 * zoomies[i].dy;
-            }
-            if (zoomies[i].y > height) {
-                zoomies[i].y = height;
-                zoomies[i].dy = -1 * zoomies[i].dy;
-            }
-
-        }*/
-
-      /*  draw image here if we want it as the background to the word
-      g.drawImage(img, 0, 0, Color.BLUE, null);*/
-
-
-
         g.drawImage(img, 0, 0, Color.BLUE, null);
 
     }
@@ -289,9 +214,6 @@ public class StaticPanel extends JPanel {
         }
         return the_system;
     }
-
-
-
 
 
 }

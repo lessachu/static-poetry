@@ -6,7 +6,6 @@ import java.util.HashMap;
 
 public class Main {
 
-
     public static void main(String[] args) {
         String seed = "snowcrash";
         int size = 4;
@@ -56,7 +55,7 @@ public class Main {
             System.out.println("--size=[number] sets the size of each pixel");
             System.out.println("--color populates the randomly with color");
             System.out.println("--pause=[number] sets the number of frames to pause before showing the next word");
-            System.out.println("--font_size=[number] sets the fontsize of the word");
+            System.out.println("--font_size=[number] sets the font size of the word");
             System.out.println("--speed=[number] sets the speed of the overall animation");
             return;
         }

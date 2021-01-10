@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 
 public class StaticPanel extends JPanel {
@@ -22,20 +23,29 @@ public class StaticPanel extends JPanel {
     private final String seed;
     private final int mode;
     private final int size;  // size
-    private final int pause;
     private int what_we_consume;  //  stutter_limit
     private int what_we_produce;  // stutter_count
+    private int word_index;
     private final Random rand = new Random();
+
+    private ArrayList<String> words;
 
     public StaticPanel(String seed, int mode, int size, int pause, int font_size, int speed) {
         this.seed = seed;
         this.mode = mode;
         this.size = size;
-        this.pause = pause;
         this.font = new Font("monospaced", Font.PLAIN, font_size);
         this.what_we_consume = rand.nextInt(30) + 25;
         this.what_we_produce = 0;
+        this.word_index = 0;
 
+        this.words = new ArrayList<String>();
+        this.words.add("snowcrash");
+        this.words.add("chitinous");
+        this.words.add("system");
+        this.words.add("you");
+        this.words.add("change");
+        this.words.add("nothing");
 
         Timer timer = new Timer(speed, new ActionListener(){
             @Override
@@ -45,8 +55,14 @@ public class StaticPanel extends JPanel {
                     if (what_we_produce > what_we_consume + pause) {
                         what_we_produce = 0;
                         what_we_consume = rand.nextInt(200) + 25;
+                        word_index++;
                     }
                 }
+
+                if(word_index > words.size()-1) {
+                    word_index = 0;
+                }
+
                 repaint();
                 }
         });
@@ -102,7 +118,7 @@ public class StaticPanel extends JPanel {
 
         g2.setColor(Color.BLACK);
         Rectangle rect = new Rectangle(width, height);
-        drawCenteredString(g2, seed, rect);
+        drawCenteredString(g2, words.get(word_index), rect);
 
         for ( int rc = 0; rc < width; rc++ ) {
             for ( int cc = 0; cc < height; cc++ ) {

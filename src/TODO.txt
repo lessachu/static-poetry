@@ -1,0 +1,4 @@
+* Support reading those words in from a file
+* Dynamically handle it if the word is bigger than the screen?
+* Work in the word chitinous
+* Write second poem

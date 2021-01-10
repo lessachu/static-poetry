@@ -23,6 +23,7 @@ public class StaticPanel extends JPanel {
     private final String seed;
     private final int mode;
     private final int size;  // size
+    private final Boolean streak;
     private int what_we_consume;  //  stutter_limit
     private int what_we_produce;  // stutter_count
     private int word_index;
@@ -30,10 +31,11 @@ public class StaticPanel extends JPanel {
 
     private ArrayList<String> words;
 
-    public StaticPanel(String seed, int mode, int size, int pause, int font_size, int speed) {
+    public StaticPanel(String seed, int mode, int size, int pause, int font_size, int speed, Boolean streak) {
         this.seed = seed;
         this.mode = mode;
         this.size = size;
+        this.streak = streak;
         this.font = new Font("monospaced", Font.PLAIN, font_size);
         this.what_we_consume = rand.nextInt(30) + 25;
         this.what_we_produce = 0;
@@ -127,7 +129,11 @@ public class StaticPanel extends JPanel {
                         if ((cc % this.size) == 0) {
                             color = GetColor(rc, cc);
                         } else {
-                            color = img.getRGB(rc, cc - 1);
+                            if(this.streak) {
+                                color = img.getRGB(rc,cc);
+                            } else {
+                                color = img.getRGB(rc, cc - 1);
+                            }
                         }
                     } else {
                         color = img.getRGB(rc - 1, cc);

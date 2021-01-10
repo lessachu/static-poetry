@@ -12,19 +12,21 @@ public class MyRunnable implements Runnable {
     private int font_size;
     private int speed;
     private String seed;
+    private Boolean streak;
 
-    public MyRunnable(String seed, int mode, int size, int pause, int font_size, int speed) {
+    public MyRunnable(String seed, int mode, int size, int pause, int font_size, int speed, Boolean streak) {
         this.seed = seed;
         this.mode = mode;
         this.size = size;
         this.pause = pause;
         this.speed = speed;
         this.font_size = font_size;
+        this.streak = streak;
     }
 
     public void run() {
 
-        var panel = new StaticPanel(this.seed, this.mode , this.size, this.pause, this.font_size, this.speed);
+        var panel = new StaticPanel(this.seed, this.mode , this.size, this.pause, this.font_size, this.speed, this.streak);
         panel.setBackground(Color.WHITE);
         var frame = new JFrame("");
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();

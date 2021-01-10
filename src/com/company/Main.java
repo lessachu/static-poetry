@@ -13,6 +13,7 @@ public class Main {
         int pause = 20;
         int font_size = 250;
         int speed = 60;
+        Boolean streak = false;
 
         Map<String, String> argsMap = new HashMap<>();
         for (String arg: args) {
@@ -49,6 +50,10 @@ public class Main {
             speed = Integer.parseInt(argsMap.get("--speed"));
         }
 
+        if (argsMap.get("--streak") != null ) {
+            streak = true;
+        }
+
         if (argsMap.get("--help") != null) {
             System.out.println("Supported options include:");
             System.out.println("--seed=[text] sets the word");
@@ -57,10 +62,11 @@ public class Main {
             System.out.println("--pause=[number] sets the number of frames to pause before showing the next word");
             System.out.println("--font_size=[number] sets the font size of the word");
             System.out.println("--speed=[number] sets the speed of the overall animation");
+            System.out.println("--streak does the horizontal streak effect (recommended with --size=50)");
             return;
         }
 
-        SwingUtilities.invokeLater(new MyRunnable(seed, mode, size, pause, font_size, speed));
+        SwingUtilities.invokeLater(new MyRunnable(seed, mode, size, pause, font_size, speed, streak));
 
     }
 }

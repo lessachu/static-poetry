@@ -7,7 +7,7 @@ import java.util.HashMap;
 public class Main {
 
     public static void main(String[] args) {
-        String seed = "snowcrash";
+        String word_file = "wordlist.txt";
         int size = 4;
         int mode = StaticPanel.GRAYSCALE;
         int pause = 20;
@@ -27,8 +27,8 @@ public class Main {
 
         System.out.println(argsMap);
 
-        if (argsMap.get("--seed") != null) {
-            seed = argsMap.get("--seed");
+        if (argsMap.get("--word_file") != null) {
+            word_file = argsMap.get("--word_file");
         }
 
         if (argsMap.get("--size") != null) {
@@ -56,7 +56,7 @@ public class Main {
 
         if (argsMap.get("--help") != null) {
             System.out.println("Supported options include:");
-            System.out.println("--seed=[text] sets the word");
+            System.out.println("--word_file=[text] sets the file to read words from (wordlist.txt by default)");
             System.out.println("--size=[number] sets the size of each pixel");
             System.out.println("--color populates the randomly with color");
             System.out.println("--pause=[number] sets the number of frames to pause before showing the next word");
@@ -66,7 +66,7 @@ public class Main {
             return;
         }
 
-        SwingUtilities.invokeLater(new MyRunnable(seed, mode, size, pause, font_size, speed, streak));
+        SwingUtilities.invokeLater(new MyRunnable(word_file, mode, size, pause, font_size, speed, streak));
 
     }
 }

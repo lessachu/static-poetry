@@ -12,6 +12,8 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 
 public class StaticPanel extends JPanel {
@@ -20,7 +22,6 @@ public class StaticPanel extends JPanel {
     public static final int COLOR = 0;
     public static Font font;
 
-    private final String seed;
     private final int mode;
     private final int size;  // size
     private final Boolean streak;
@@ -31,8 +32,7 @@ public class StaticPanel extends JPanel {
 
     private ArrayList<String> words;
 
-    public StaticPanel(String seed, int mode, int size, int pause, int font_size, int speed, Boolean streak) {
-        this.seed = seed;
+    public StaticPanel(String word_list, int mode, int size, int pause, int font_size, int speed, Boolean streak) {
         this.mode = mode;
         this.size = size;
         this.streak = streak;
@@ -40,14 +40,23 @@ public class StaticPanel extends JPanel {
         this.what_we_consume = rand.nextInt(30) + 25;
         this.what_we_produce = 0;
         this.word_index = 0;
-
         this.words = new ArrayList<String>();
-        this.words.add("snowcrash");
-        this.words.add("chitinous");
-        this.words.add("system");
-        this.words.add("you");
-        this.words.add("change");
-        this.words.add("nothing");
+
+        try (BufferedReader br = new BufferedReader(new FileReader(word_list))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+               this.words.add(line);
+            }
+        } catch (Exception e) {
+          System.out.println("Error reading from file: " + word_list);
+            this.words.add("snowcrash");
+            this.words.add("chitinous");
+            this.words.add("system");
+            this.words.add("you");
+            this.words.add("change");
+            this.words.add("nothing");
+        }
+
 
         Timer timer = new Timer(speed, new ActionListener(){
             @Override

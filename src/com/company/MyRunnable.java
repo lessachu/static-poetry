@@ -11,11 +11,11 @@ public class MyRunnable implements Runnable {
     private int pause;
     private int font_size;
     private int speed;
-    private String seed;
+    private String word_file;
     private Boolean streak;
 
-    public MyRunnable(String seed, int mode, int size, int pause, int font_size, int speed, Boolean streak) {
-        this.seed = seed;
+    public MyRunnable(String word_file, int mode, int size, int pause, int font_size, int speed, Boolean streak) {
+        this.word_file = word_file;
         this.mode = mode;
         this.size = size;
         this.pause = pause;
@@ -26,7 +26,7 @@ public class MyRunnable implements Runnable {
 
     public void run() {
 
-        var panel = new StaticPanel(this.seed, this.mode , this.size, this.pause, this.font_size, this.speed, this.streak);
+        var panel = new StaticPanel(this.word_file, this.mode , this.size, this.pause, this.font_size, this.speed, this.streak);
         panel.setBackground(Color.WHITE);
         var frame = new JFrame("");
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();

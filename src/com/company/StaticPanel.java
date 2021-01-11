@@ -102,14 +102,24 @@ public class StaticPanel extends JPanel {
     }
 
     public void drawCenteredString(Graphics g, String text, Rectangle rect) {
-        // Get the FontMetrics
-        FontMetrics metrics = g.getFontMetrics(this.font);
+
+        Font font = this.font;
+
+        FontMetrics metrics = g.getFontMetrics(font);
+
+        while (metrics.stringWidth(text) > rect.width) {
+            float font_size = font.getSize2D();
+            font = font.deriveFont(font_size * .90f);
+            metrics = g.getFontMetrics(font);
+        }
+
         // Determine the X coordinate for the text
         int x = rect.x + (rect.width - metrics.stringWidth(text)) / 2;
         // Determine the Y coordinate for the text (note we add the ascent, as in java 2d 0 is top of the screen)
         int y = rect.y + ((rect.height - metrics.getHeight()) / 2) + metrics.getAscent();
+
         // Set the font
-        g.setFont(this.font);
+        g.setFont(font);
         // Draw the String
         g.drawString(text, x, y);
     }

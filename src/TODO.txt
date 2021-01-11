@@ -1,4 +1,8 @@
-* Support reading those words in from a file
-* Dynamically handle it if the word is bigger than the screen?
+* Support true fullscreen mode
 * Work in the word chitinous
 * Write second poem
+* Add white noise support
+
+DONE:
+* Read in words from a file
+* Dynamically handle it if the word is bigger than the screen

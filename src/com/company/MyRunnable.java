@@ -28,11 +28,13 @@ public class MyRunnable implements Runnable {
 
         var panel = new StaticPanel(this.word_file, this.mode , this.size, this.pause, this.font_size, this.speed, this.streak);
         panel.setBackground(Color.WHITE);
-        var frame = new JFrame("");
+        var frame = new FullScreenJFrame();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setSize(d.width,d.height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(panel, BorderLayout.CENTER);
+       // frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+      //  frame.setUndecorated(true);
         frame.setVisible(true);
     }
 }

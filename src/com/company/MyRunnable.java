@@ -1,5 +1,8 @@
 package com.company;
 
+import javax.sound.sampled.*;
+import java.nio.ByteBuffer;
+import java.util.Random;
 
 import java.awt.*;
 import javax.swing.JFrame;
@@ -26,16 +29,15 @@ public class MyRunnable implements Runnable {
 
     public void run() {
 
-        var panel = new StaticPanel(this.word_file, this.mode , this.size, this.pause, this.font_size, this.speed, this.streak);
+        var panel = new StaticPanel(this.word_file, this.mode, this.size, this.pause, this.font_size, this.speed, this.streak);
         panel.setBackground(Color.WHITE);
         var frame = new FullScreenJFrame();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-        frame.setSize(d.width,d.height);
+        frame.setSize(d.width, d.height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(panel, BorderLayout.CENTER);
-       // frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-      //  frame.setUndecorated(true);
         frame.setVisible(true);
     }
+
 }
 

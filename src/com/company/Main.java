@@ -67,6 +67,5 @@ public class Main {
         }
 
         SwingUtilities.invokeLater(new MyRunnable(word_file, mode, size, pause, font_size, speed, streak));
-
     }
 }

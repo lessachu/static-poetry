@@ -26,7 +26,7 @@ public class StaticPanel extends JPanel {
     private final int size;  // size
     private final Boolean streak;
     private int what_we_consume;  //  stutter_limit
-    private int what_we_produce;  // stutter_count
+    private int the_worm_on_the_leaf;  // stutter_count
     private int word_index;
     private final Random rand = new Random();
 
@@ -38,9 +38,9 @@ public class StaticPanel extends JPanel {
         this.streak = streak;
         this.font = new Font("monospaced", Font.PLAIN, font_size);
         this.what_we_consume = rand.nextInt(30) + 25;
-        this.what_we_produce = 0;
+        this.the_worm_on_the_leaf = 0;
         this.word_index = 0;
-        this.words = new ArrayList<String>();
+        this.words = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(word_list))) {
             String line;
@@ -61,10 +61,10 @@ public class StaticPanel extends JPanel {
         Timer timer = new Timer(speed, new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                what_we_produce++;
-                if (what_we_produce > what_we_consume) {
-                    if (what_we_produce > what_we_consume + pause) {
-                        what_we_produce = 0;
+                the_worm_on_the_leaf++;
+                if (the_worm_on_the_leaf > what_we_consume) {
+                    if (the_worm_on_the_leaf > what_we_consume + pause) {
+                        the_worm_on_the_leaf = 0;
                         what_we_consume = rand.nextInt(200) + 25;
                         word_index++;
                     }
@@ -89,9 +89,9 @@ public class StaticPanel extends JPanel {
     }
 
     private int GetColor(int x, int y) {
-        int red = 0;
-        int green = 0;
-        int blue = 0;
+        int red;
+        int green;
+        int blue;
 
         if (this.mode == COLOR) {
             return GetRandomColor();
@@ -152,6 +152,10 @@ public class StaticPanel extends JPanel {
            return (value < val);
        }
 
+       public boolean struggle_in_your_chitinous_shell(int val) {
+           return (value < val);
+       }
+
        public boolean touch(int comp) {
            return (value % size) == comp;
        }
@@ -185,6 +189,14 @@ public class StaticPanel extends JPanel {
         return GetColor(x.value, y.value);
     }
 
+    private int the_moth_she_becomes() {
+        return (this.rand.nextInt(what_we_consume));
+    }
+
+    private int built_from(int val) {
+       return val;
+    }
+
 
     private World snowCrashv2() {
 
@@ -210,24 +222,25 @@ public class StaticPanel extends JPanel {
         i.am(nothing);
         you.are(nothing);
 
-        while(truth.eludes(you, i)) {
+        while (truth.eludes(you, i)) {
             you.are(nothing);
 
-            while(you.focus_on(limits)) {
-                if(this.rand.nextInt(what_we_consume) < what_we_produce){
+            while (you.struggle_in_your_chitinous_shell( built_from(limits) )) {
+
+                if (the_worm_on_the_leaf > the_moth_she_becomes()){
+
                     if (i.touch(nothing)) {
                         if (you.touch(nothing)) {
                             change = what_is_woven_from(you, i);
                         } else {
-                            if(this.streak) {
+                            if (this.streak) {
                                 change = the_system.creates_change_from(i.value, you.value);
                             } else {
                                 change = the_system.creates_change_from(i.value, you.value - 1);
                             }
                         }
                     } else {
-                        // should change this to some other phrase
-                        change = the_system.creates_change_from(i.value - 1, you.value);
+                        change = the_system.getRGB(i.value - 1, you.value);
                     }
 
                     the_system.is_moved_by(i.value, you.value, change);
@@ -259,7 +272,7 @@ public class StaticPanel extends JPanel {
             you.are(nothing);
             while(you.focus_on(limits)) {
 
-                if (what_we_consume > what_we_produce) {
+                if (what_we_consume > the_worm_on_the_leaf) {
 
                     if (i.touch(nothing)) {
                         if (you.touch(nothing)) {

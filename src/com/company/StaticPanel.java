@@ -24,7 +24,7 @@ public class StaticPanel extends JPanel {
 
     private final int mode;
     private final int size;  // size
-    private final Boolean streak;
+    private final Boolean mitochondrial_chrysalis;  // streak
     private int what_we_consume;  //  stutter_limit
     private int the_worm_on_the_leaf;  // stutter_count
     private int word_index;
@@ -35,7 +35,7 @@ public class StaticPanel extends JPanel {
     public StaticPanel(String word_list, int mode, int size, int pause, int font_size, int speed, Boolean streak) {
         this.mode = mode;
         this.size = size;
-        this.streak = streak;
+        this.mitochondrial_chrysalis = streak;
         this.font = new Font("monospaced", Font.PLAIN, font_size);
         this.what_we_consume = rand.nextInt(30) + 25;
         this.the_worm_on_the_leaf = 0;
@@ -129,7 +129,7 @@ public class StaticPanel extends JPanel {
 
 
     //    BufferedImage img = snowCrash();
-        BufferedImage img = snowCrashv2();
+        BufferedImage img = hivemind();
         g.drawImage(img, 0, 0, Color.BLUE, null);
 
     }
@@ -139,12 +139,13 @@ public class StaticPanel extends JPanel {
  */
 
    private static final int nothing = 0;
+   private static final int larval = 0;
    private static final int here = 0;
 
    private class human {
        public int value;
 
-       public boolean eludes(human you, human i) {
+       public boolean binds_together(human you, human i) {
            return (i.value < value);
        }
 
@@ -172,9 +173,12 @@ public class StaticPanel extends JPanel {
        public void is(int newval) {
            am(newval);
        }
+       public void is_a_web_of(int newval) { am(newval);}
        public void exist() {
            value++;
        }
+       public void squirm() { value++; }
+       public void recoil() { value++; }
    }
 
    public int hard() {
@@ -189,23 +193,28 @@ public class StaticPanel extends JPanel {
         return GetColor(x.value, y.value);
     }
 
-    private int the_moth_she_becomes() {
+    private int the_silken_cocoon_woven_from(human y, human x) {
+        return GetColor(x.value, y.value);
+    }
+
+    private int the_moth_she_will_become() {
         return (this.rand.nextInt(what_we_consume));
     }
+
+    // These are all just pass through functions
 
     private int built_from(int val) {
        return val;
     }
 
+    public boolean thread_by_thread(boolean b) { return b; }
 
-    private World snowCrashv2() {
+    public boolean within(boolean b) { return b; }
 
-        int boundaries = hard();
-        int limits = strict();
-        int change = nothing;
 
-        World the_system = new World(boundaries, limits);
-        Graphics g2 = the_system.getGraphics();
+    private void we_scurry_yet_we_propagate(World world, int boundaries, int limits) {
+
+       Graphics g2 = world.getGraphics();
 
         g2.setColor(Color.WHITE);
         g2.fillRect(0,0, boundaries, limits);
@@ -213,41 +222,55 @@ public class StaticPanel extends JPanel {
         g2.setColor(Color.BLACK);
         Rectangle rect = new Rectangle(boundaries, limits);
         drawCenteredString(g2, words.get(word_index), rect);
+    }
 
-        human truth = new human();
-        truth.is(boundaries);
+
+    private World hivemind() {
+
+        int boundaries = hard();
+        int limits = strict();
+        int change = nothing;
+
+        World the_system = new World(boundaries, limits);
+        we_scurry_yet_we_propagate(the_system, boundaries, limits);
+
+        human life = new human();
+        life.is_a_web_of(boundaries);
 
         human you = new human(), i = new human();
 
         i.am(nothing);
         you.are(nothing);
 
-        while (truth.eludes(you, i)) {
-            you.are(nothing);
+        while (thread_by_thread(life.binds_together(you, i))) {
+            you.are(larval);
 
-            while (you.struggle_in_your_chitinous_shell( built_from(limits) )) {
+            while (you.struggle_in_your_chitinous_shell(built_from(limits))) {
 
-                if (the_worm_on_the_leaf > the_moth_she_becomes()){
+                if (the_worm_on_the_leaf > the_moth_she_will_become()){
 
                     if (i.touch(nothing)) {
                         if (you.touch(nothing)) {
-                            change = what_is_woven_from(you, i);
+
+                            change = the_silken_cocoon_woven_from(you, i);
+
                         } else {
-                            if (this.streak) {
+
+                            if (within(this.mitochondrial_chrysalis)) {
                                 change = the_system.creates_change_from(i.value, you.value);
                             } else {
                                 change = the_system.creates_change_from(i.value, you.value - 1);
                             }
                         }
                     } else {
-                        change = the_system.getRGB(i.value - 1, you.value);
+                        change = the_system.feeding_on(i.value - 1, you.value);
                     }
 
                     the_system.is_moved_by(i.value, you.value, change);
                 }
-                you.exist();
+                you.squirm();
             }
-            i.exist();
+            i.recoil();
         }
         return the_system;
     }
@@ -268,7 +291,7 @@ public class StaticPanel extends JPanel {
         i.am(nothing);
         you.are(nothing);
 
-        while(truth.eludes(you, i)) {
+        while(truth.binds_together(you, i)) {
             you.are(nothing);
             while(you.focus_on(limits)) {
 

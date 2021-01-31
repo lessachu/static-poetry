@@ -16,8 +16,9 @@ public class MyRunnable implements Runnable {
     private int speed;
     private String word_file;
     private Boolean streak;
+    private Float volume;
 
-    public MyRunnable(String word_file, int mode, int size, int pause, int font_size, int speed, Boolean streak) {
+    public MyRunnable(String word_file, int mode, int size, int pause, int font_size, int speed, Boolean streak, Float volume) {
         this.word_file = word_file;
         this.mode = mode;
         this.size = size;
@@ -25,13 +26,14 @@ public class MyRunnable implements Runnable {
         this.speed = speed;
         this.font_size = font_size;
         this.streak = streak;
+        this.volume = volume;
     }
 
     public void run() {
 
         var panel = new StaticPanel(this.word_file, this.mode, this.size, this.pause, this.font_size, this.speed, this.streak);
         panel.setBackground(Color.WHITE);
-        var frame = new FullScreenJFrame();
+        var frame = new FullScreenJFrame(this.volume);
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setSize(d.width, d.height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

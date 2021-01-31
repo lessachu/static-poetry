@@ -15,14 +15,14 @@ public class FullScreenJFrame extends JFrame{
     private GraphicsDevice vc;
     private WhiteNoiseThread generatorThread;
 
-    public FullScreenJFrame(){
+    public FullScreenJFrame(Float volume){
         super();
 
         GraphicsEnvironment e = GraphicsEnvironment.getLocalGraphicsEnvironment();
         vc= e.getDefaultScreenDevice();
         setFullScreen(this);
 
-        generatorThread = new WhiteNoiseThread();
+        generatorThread = new WhiteNoiseThread(volume);
         generatorThread.start();
 
         addWindowListener(new WindowAdapter() {

@@ -14,6 +14,7 @@ public class Main {
         int font_size = 250;
         int speed = 60;
         Boolean streak = false;
+        Float volume = -10.0f;
 
         Map<String, String> argsMap = new HashMap<>();
         for (String arg: args) {
@@ -54,6 +55,10 @@ public class Main {
             streak = true;
         }
 
+        if (argsMap.get("--volume") != null ) {
+            volume = Float.parseFloat(argsMap.get("--volume"));
+        }
+
         if (argsMap.get("--help") != null) {
             System.out.println("Supported options include:");
             System.out.println("--word_file=[text] sets the file to read words from (wordlist.txt by default)");
@@ -63,9 +68,10 @@ public class Main {
             System.out.println("--font_size=[number] sets the font size of the word");
             System.out.println("--speed=[number] sets the speed of the overall animation");
             System.out.println("--streak does the horizontal streak effect (recommended with --size=50)");
+            System.out.println("--volume=[float] sets the volume (range from -80.0f to 6.0f)");
             return;
         }
 
-        SwingUtilities.invokeLater(new MyRunnable(word_file, mode, size, pause, font_size, speed, streak));
+        SwingUtilities.invokeLater(new MyRunnable(word_file, mode, size, pause, font_size, speed, streak, volume));
     }
 }

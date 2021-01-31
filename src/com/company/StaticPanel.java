@@ -126,45 +126,14 @@ public class StaticPanel extends JPanel {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        int width = getWidth();
-        int height = getHeight();
-        int color = 0;
+
 
     //    BufferedImage img = snowCrash();
-        BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB );
-        Graphics g2 = img.getGraphics();
-
-        g2.setColor(Color.WHITE);
-        g2.fillRect(0,0, width, height);
-
-        g2.setColor(Color.BLACK);
-        Rectangle rect = new Rectangle(width, height);
-        drawCenteredString(g2, words.get(word_index), rect);
-
-        for ( int rc = 0; rc < width; rc++ ) {
-            for ( int cc = 0; cc < height; cc++ ) {
-                if(this.rand.nextInt(what_we_consume) < what_we_produce){
-                if ((rc % this.size) == 0) {
-                        if ((cc % this.size) == 0) {
-                            color = GetColor(rc, cc);
-                        } else {
-                            if(this.streak) {
-                                color = img.getRGB(rc,cc);
-                            } else {
-                                color = img.getRGB(rc, cc - 1);
-                            }
-                        }
-                    } else {
-                        color = img.getRGB(rc - 1, cc);
-                    }
-
-                    img.setRGB(rc, cc, color);
-                }
-           }
-        }
+        BufferedImage img = snowCrashv2();
         g.drawImage(img, 0, 0, Color.BLUE, null);
 
     }
+
 
 /* this is a bunch of set up code to make the poetry work
  */
@@ -215,6 +184,61 @@ public class StaticPanel extends JPanel {
     private int what_is_woven_from(human y, human x) {
         return GetColor(x.value, y.value);
     }
+
+
+    private World snowCrashv2() {
+
+        int boundaries = hard();
+        int limits = strict();
+        int change = nothing;
+
+        World the_system = new World(boundaries, limits);
+        Graphics g2 = the_system.getGraphics();
+
+        g2.setColor(Color.WHITE);
+        g2.fillRect(0,0, boundaries, limits);
+
+        g2.setColor(Color.BLACK);
+        Rectangle rect = new Rectangle(boundaries, limits);
+        drawCenteredString(g2, words.get(word_index), rect);
+
+        human truth = new human();
+        truth.is(boundaries);
+
+        human you = new human(), i = new human();
+
+        i.am(nothing);
+        you.are(nothing);
+
+        while(truth.eludes(you, i)) {
+            you.are(nothing);
+
+            while(you.focus_on(limits)) {
+                if(this.rand.nextInt(what_we_consume) < what_we_produce){
+                    if (i.touch(nothing)) {
+                        if (you.touch(nothing)) {
+                            change = what_is_woven_from(you, i);
+                        } else {
+                            if(this.streak) {
+                                change = the_system.creates_change_from(i.value, you.value);
+                            } else {
+                                change = the_system.creates_change_from(i.value, you.value - 1);
+                            }
+                        }
+                    } else {
+                        // should change this to some other phrase
+                        change = the_system.creates_change_from(i.value - 1, you.value);
+                    }
+
+                    the_system.is_moved_by(i.value, you.value, change);
+                }
+                you.exist();
+            }
+            i.exist();
+        }
+        return the_system;
+    }
+
 
     private World snowCrash() {
         int boundaries = hard();

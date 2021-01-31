@@ -1,6 +1,5 @@
-* Work in the word chitinous
+* Add volume support for white noise
 * Write second poem
-* Add white noise support
 
 DONE:
 * Read in words from a file

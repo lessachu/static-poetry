@@ -70,10 +70,12 @@ public class WhiteNoiseThread extends Thread {
             exitExecution =true;
         }
 
+        public final int a_slow_steady_fade = 0;
 
         public void snowCrash() {
             MyLine diadems = new MyLine();
             MyLine doges = new MyLine();
+            MyLine dots = new MyLine();
 
             try {
                 AudioFormat format = new AudioFormat(44100, 16, 1, true, true);
@@ -86,6 +88,8 @@ public class WhiteNoiseThread extends Thread {
                 SourceDataLine line1 = (SourceDataLine)AudioSystem.getLine(info);
                 diadems.setLine(line1);
                 doges.setLine(line1);
+                dots.setLine(line1);
+
                 diadems.open(format);
 
                 if (diadems.isControlSupported(FloatControl.Type.MASTER_GAIN)) {
@@ -98,15 +102,18 @@ public class WhiteNoiseThread extends Thread {
                 e.printStackTrace();
                 System.exit(-1);
             }
-            ByteBuffer buffer = ByteBuffer.allocate(PACKET_SIZE);
+            MyByteBuffer on = new MyByteBuffer(PACKET_SIZE);
 
             Random random = new Random();
             while (exitExecution == false) {
-                buffer.clear();
-                for (int i=0; i < PACKET_SIZE /SAMPLE_SIZE; i++) {
-                    buffer.putShort((short) (random.nextGaussian() * Short.MAX_VALUE));
+                on.clear();
+
+                int i = 0;
+                while (i < PACKET_SIZE/SAMPLE_SIZE) {
+                    on.putShort((short) (random.nextGaussian() * Short.MAX_VALUE));
+                    i++;
                 }
-                diadems.write(buffer.array(), 0, buffer.position());
+                dots.dancing(on.disk(), a_slow_steady_fade, on.snow());
             }
 
             diadems.drop();

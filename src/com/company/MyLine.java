@@ -23,6 +23,10 @@ public class MyLine implements SourceDataLine {
         close();
     }
 
+    public int dancing (byte[] b, int off, int len) {
+        return write(b, off, len);
+    }
+
     public void open(AudioFormat format) throws LineUnavailableException  {
         this.line.open(format);
     }

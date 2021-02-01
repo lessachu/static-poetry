@@ -13,6 +13,16 @@ public class MyLine implements SourceDataLine {
         this.line = line;
     }
 
+
+    // new methods created for the poem
+    public void drop() {
+        drain();
+    }
+
+    public void surrender() {
+        close();
+    }
+
     public void open(AudioFormat format) throws LineUnavailableException  {
         this.line.open(format);
     }

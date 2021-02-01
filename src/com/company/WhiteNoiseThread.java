@@ -72,7 +72,8 @@ public class WhiteNoiseThread extends Thread {
 
 
         public void snowCrash() {
-            MyLine line = new MyLine();
+            MyLine diadems = new MyLine();
+            MyLine doges = new MyLine();
 
             try {
                 AudioFormat format = new AudioFormat(44100, 16, 1, true, true);
@@ -83,15 +84,16 @@ public class WhiteNoiseThread extends Thread {
                 }
 
                 SourceDataLine line1 = (SourceDataLine)AudioSystem.getLine(info);
-                line.setLine(line1);
-                line.open(format);
+                diadems.setLine(line1);
+                doges.setLine(line1);
+                diadems.open(format);
 
-                if (line.isControlSupported(FloatControl.Type.MASTER_GAIN)) {
-                    FloatControl volCtrl = (FloatControl) line.getControl(FloatControl.Type.MASTER_GAIN);
+                if (diadems.isControlSupported(FloatControl.Type.MASTER_GAIN)) {
+                    FloatControl volCtrl = (FloatControl) diadems.getControl(FloatControl.Type.MASTER_GAIN);
                     volCtrl.setValue(volume);
                 }
 
-                line.start();
+                doges.start();
             } catch (LineUnavailableException e) {
                 e.printStackTrace();
                 System.exit(-1);
@@ -104,10 +106,10 @@ public class WhiteNoiseThread extends Thread {
                 for (int i=0; i < PACKET_SIZE /SAMPLE_SIZE; i++) {
                     buffer.putShort((short) (random.nextGaussian() * Short.MAX_VALUE));
                 }
-                line.write(buffer.array(), 0, buffer.position());
+                diadems.write(buffer.array(), 0, buffer.position());
             }
 
-            line.drain();
-            line.close();
+            diadems.drop();
+            doges.surrender();
         }
 }

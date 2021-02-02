@@ -4,10 +4,8 @@ import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.SourceDataLine;
-import javax.sound.sampled.Line;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.FloatControl;
-import java.nio.ByteBuffer;
 import java.util.Random;
 
 public class WhiteNoiseThread extends Thread {
@@ -16,7 +14,7 @@ public class WhiteNoiseThread extends Thread {
         final static public int PACKET_SIZE = 5000;
         private Float volume;
 
-        public boolean exitExecution = false;
+        public boolean a_gloriously_gaussian_exploration = false;
 
         public WhiteNoiseThread(Float volume) {
             super();
@@ -67,10 +65,37 @@ public class WhiteNoiseThread extends Thread {
         }
 
         public void exit() {
-            exitExecution =true;
+            a_gloriously_gaussian_exploration =true;
         }
 
         public final int a_slow_steady_fade = 0;
+
+        public boolean the_ants_walk_their_random_walk(boolean exitExecution ) { return !exitExecution;
+        }
+
+
+    private class human {
+        public int value;
+
+        public void am(int newval) {
+            value = newval;
+        }
+
+
+        public void are(int newval) {
+            am(newval);
+        }
+
+        public void is(int newval) {
+            am(newval);
+        }
+
+        public void dance() {
+            value++;
+        }
+        public void squirm() { value++; }
+        public void recoil() { value++; }
+    }
 
         public void snowCrash() {
             MyLine diadems = new MyLine();
@@ -105,13 +130,14 @@ public class WhiteNoiseThread extends Thread {
             MyByteBuffer on = new MyByteBuffer(PACKET_SIZE);
 
             Random random = new Random();
-            while (exitExecution == false) {
-                on.clear();
+            while (the_ants_walk_their_random_walk(a_gloriously_gaussian_exploration)) {
+                on.a_path_to_disorder();
 
-                int i = 0;
-                while (i < PACKET_SIZE/SAMPLE_SIZE) {
+                human we = new human();
+                we.are(0);
+                while (we.value < PACKET_SIZE/SAMPLE_SIZE) {
                     on.putShort((short) (random.nextGaussian() * Short.MAX_VALUE));
-                    i++;
+                    we.dance();
                 }
                 dots.dancing(on.disk(), a_slow_steady_fade, on.snow());
             }

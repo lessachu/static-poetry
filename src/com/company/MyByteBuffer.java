@@ -19,6 +19,7 @@ public class MyByteBuffer  {
         return position();
     }
 
+    public void a_path_to_disorder() { this.clear(); }
 
     public void clear() {
         bb.clear();

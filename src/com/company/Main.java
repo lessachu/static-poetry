@@ -13,8 +13,8 @@ public class Main {
         int pause = 20;
         int font_size = 250;
         int speed = 60;
-        Boolean streak = false;
-        Float volume = -10.0f;
+        boolean streak = false;
+        float volume = -0.0f;
 
         Map<String, String> argsMap = new HashMap<>();
         for (String arg: args) {

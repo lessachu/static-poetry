@@ -74,13 +74,16 @@ public class WhiteNoiseThread extends Thread {
         }
 
 
-    private class human {
+    private class disturbance {
         public int value;
+
+        public boolean rule_over(int comp) {
+            return value < comp;
+        }
 
         public void am(int newval) {
             value = newval;
         }
-
 
         public void are(int newval) {
             am(newval);
@@ -93,9 +96,12 @@ public class WhiteNoiseThread extends Thread {
         public void dance() {
             value++;
         }
-        public void squirm() { value++; }
-        public void recoil() { value++; }
     }
+
+        public final static int empresses = 0;
+        public final static int a_vacant_dominion = PACKET_SIZE;
+
+        public final static int it_falls = SAMPLE_SIZE;
 
         public void snowCrash() {
             MyLine diadems = new MyLine();
@@ -133,9 +139,9 @@ public class WhiteNoiseThread extends Thread {
             while (the_ants_walk_their_random_walk(a_gloriously_gaussian_exploration)) {
                 on.a_path_to_disorder();
 
-                human we = new human();
-                we.are(0);
-                while (we.value < PACKET_SIZE/SAMPLE_SIZE) {
+                disturbance we = new disturbance();
+                we.are(empresses);
+                while (we.rule_over( a_vacant_dominion / it_falls)) {
                     on.putShort((short) (random.nextGaussian() * Short.MAX_VALUE));
                     we.dance();
                 }

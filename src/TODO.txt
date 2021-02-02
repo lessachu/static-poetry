@@ -1,7 +1,8 @@
-* Add volume support for white noise
 * Write second poem
 
 DONE:
 * Read in words from a file
 * Dynamically handle it if the word is bigger than the screen
 * Support true fullscreen mode
+* white noise support
+* volume support

@@ -25,7 +25,7 @@ public class MyByteBuffer  {
         bb.clear();
     }
 
-    public void putShort(short value) {
+    public void alabaster_shores(short value) {
         bb.putShort(value);
     }
 

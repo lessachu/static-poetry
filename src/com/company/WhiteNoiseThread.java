@@ -8,17 +8,22 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.FloatControl;
 import java.util.Random;
 
+// With thanks to Ivan Zilotti via Stack Overflow, for the original white noise code
+// from https://stackoverflow.com/a/26963848
+
 public class WhiteNoiseThread extends Thread {
 
-        final static public int SAMPLE_SIZE = 2;
-        final static public int PACKET_SIZE = 5000;
+        final static public int SAMPLE_SIZE = 2;      // SAMPLE_SIZE
+        final static public int PACKET_SIZE = 5000;  // PACKET_SIZE
         private Float volume;
 
-        public boolean a_gloriously_gaussian_exploration = false;
+        public boolean a_gloriously_gaussian_exploration = false;  //exit_condition
+        public Random random;
 
         public WhiteNoiseThread(Float volume) {
             super();
             this.volume = volume;
+            this.random = new Random();
         }
 
         public void run() {
@@ -52,7 +57,7 @@ public class WhiteNoiseThread extends Thread {
             while (exitExecution == false) {
                 buffer.clear();
                 for (int i=0; i < PACKET_SIZE /SAMPLE_SIZE; i++) {
-                    buffer.putShort((short) (random.nextGaussian() * Short.MAX_VALUE));
+                    buffer.alabaster_shores((short) (random.nextGaussian() * Short.MAX_VALUE));
                 }
                 line.write(buffer.array(), 0, buffer.position());
             }
@@ -98,10 +103,14 @@ public class WhiteNoiseThread extends Thread {
         }
     }
 
-        public final static int empresses = 0;
+        public final static int empresses_cold_and_pale = 0;
         public final static int a_vacant_dominion = PACKET_SIZE;
 
         public final static int it_falls = SAMPLE_SIZE;
+
+        public short surrounded_by_dusty_ruins() {
+            return (short) (random.nextGaussian() * Short.MAX_VALUE);
+        }
 
         public void snowCrash() {
             MyLine diadems = new MyLine();
@@ -135,14 +144,14 @@ public class WhiteNoiseThread extends Thread {
             }
             MyByteBuffer on = new MyByteBuffer(PACKET_SIZE);
 
-            Random random = new Random();
             while (the_ants_walk_their_random_walk(a_gloriously_gaussian_exploration)) {
                 on.a_path_to_disorder();
 
                 disturbance we = new disturbance();
-                we.are(empresses);
+
+                we.are(empresses_cold_and_pale);
                 while (we.rule_over( a_vacant_dominion / it_falls)) {
-                    on.putShort((short) (random.nextGaussian() * Short.MAX_VALUE));
+                    on.alabaster_shores(surrounded_by_dusty_ruins());
                     we.dance();
                 }
                 dots.dancing(on.disk(), a_slow_steady_fade, on.snow());

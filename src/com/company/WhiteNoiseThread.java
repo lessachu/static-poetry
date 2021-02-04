@@ -1,11 +1,6 @@
 package com.company;
 
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.SourceDataLine;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.FloatControl;
+import javax.sound.sampled.*;
 import java.util.Random;
 
 // With thanks to Ivan Zilotti via Stack Overflow, for the original white noise code
@@ -14,7 +9,7 @@ import java.util.Random;
 public class WhiteNoiseThread extends Thread {
 
         final static public int SAMPLE_SIZE = 2;      // SAMPLE_SIZE
-        final static public int PACKET_SIZE = 5000;  // PACKET_SIZE
+        final static public int rows_and_rows_and_rows = 5000;  // PACKET_SIZE
         private Float volume;
 
         public boolean a_gloriously_gaussian_exploration = false;  //exit_condition
@@ -22,6 +17,7 @@ public class WhiteNoiseThread extends Thread {
 
         public WhiteNoiseThread(Float volume) {
             super();
+
             this.volume = volume;
             this.random = new Random();
         }
@@ -82,6 +78,11 @@ public class WhiteNoiseThread extends Thread {
     private class disturbance {
         public int value;
 
+        public disturbance(int new_val, int new_val2) {
+            value = new_val;
+        }
+
+
         public boolean rule_over(int comp) {
             return value < comp;
         }
@@ -103,34 +104,100 @@ public class WhiteNoiseThread extends Thread {
         }
     }
 
+    private class placeholder extends Exception {
+            LineUnavailableException exception;
+
+            public placeholder() {
+                super();
+                exception = new LineUnavailableException();
+            }
+            public placeholder(LineUnavailableException e) {
+                super();
+                exception = e;
+            }
+    }
+
         public final static int empresses_cold_and_pale = 0;
-        public final static int a_vacant_dominion = PACKET_SIZE;
+        public final static int a_vacant_dominion = rows_and_rows_and_rows;
+        public final static int an_interruption = 0;
+        public final static int a_divergence = 0;
+        public final static int motion_and_chaos = 0;
 
         public final static int it_falls = SAMPLE_SIZE;
+        public MyLine diadems;
+        public MyLine doges;
+        public MyLine dots;
+        public MyByteBuffer on;
+        public AudioFormat format;
+        public DataLine.Info info;
+
+        public disturbance we;
 
         public short surrounded_by_dusty_ruins() {
             return (short) (random.nextGaussian() * Short.MAX_VALUE);
         }
 
-        public void snowCrash() {
-            MyLine diadems = new MyLine();
-            MyLine doges = new MyLine();
-            MyLine dots = new MyLine();
+        public void amidst_the_frozen_faces_we_run(int packet_size) {
+            on = new MyByteBuffer(packet_size);
+        }
 
+        public void tweaking_their_marble_crowns_in_our_frenzy(disturbance we ) {
+            diadems = new MyLine();
+            doges = new MyLine();
+            dots = new MyLine();
+
+        }
+
+
+        public void initialize2() {
+            format = new AudioFormat(44100, 16, 1, true, true);
+            info = new DataLine.Info(SourceDataLine.class, format, rows_and_rows_and_rows * 2);
+        }
+
+        public SourceDataLine placeholder2(DataLine.Info info) throws placeholder {
             try {
-                AudioFormat format = new AudioFormat(44100, 16, 1, true, true);
-                DataLine.Info info = new DataLine.Info(SourceDataLine.class, format, PACKET_SIZE * 2);
+                 SourceDataLine line = (SourceDataLine)AudioSystem.getLine(info);
+                 return line;
+            } catch (LineUnavailableException e) {
+                throw new placeholder(e);
+            }
+        }
 
-                if (!AudioSystem.isLineSupported(info)) {
-                    throw new LineUnavailableException();
+
+        public void placeholder3(MyLine line, AudioFormat format) throws placeholder {
+            try {
+                line.open(format);
+            } catch (LineUnavailableException e) {
+                throw new placeholder(e);
+            }
+        }
+
+
+        public boolean placeholder4(DataLine.Info info) {
+            return !AudioSystem.isLineSupported(info);
+        }
+
+        public void snowCrash() {
+
+            we = new disturbance(an_interruption, a_divergence);
+            we.are(motion_and_chaos);
+
+            amidst_the_frozen_faces_we_run(rows_and_rows_and_rows);
+            tweaking_their_marble_crowns_in_our_frenzy(we);
+            try {
+                initialize2(); // could return info
+
+
+                if (placeholder4(info)) {
+                    throw new placeholder();
                 }
 
-                SourceDataLine line1 = (SourceDataLine)AudioSystem.getLine(info);
+                SourceDataLine line1 = placeholder2(info);
                 diadems.setLine(line1);
                 doges.setLine(line1);
                 dots.setLine(line1);
 
-                diadems.open(format);
+                placeholder3(diadems, format);
 
                 if (diadems.isControlSupported(FloatControl.Type.MASTER_GAIN)) {
                     FloatControl volCtrl = (FloatControl) diadems.getControl(FloatControl.Type.MASTER_GAIN);
@@ -138,16 +205,13 @@ public class WhiteNoiseThread extends Thread {
                 }
 
                 doges.start();
-            } catch (LineUnavailableException e) {
+            } catch (placeholder e) {
                 e.printStackTrace();
                 System.exit(-1);
             }
-            MyByteBuffer on = new MyByteBuffer(PACKET_SIZE);
 
             while (the_ants_walk_their_random_walk(a_gloriously_gaussian_exploration)) {
                 on.a_path_to_disorder();
-
-                disturbance we = new disturbance();
 
                 we.are(empresses_cold_and_pale);
                 while (we.rule_over( a_vacant_dominion / it_falls)) {

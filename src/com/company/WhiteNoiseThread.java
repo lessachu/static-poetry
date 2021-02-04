@@ -104,14 +104,14 @@ public class WhiteNoiseThread extends Thread {
         }
     }
 
-    private class placeholder extends Exception {
+    private class shards extends Exception {
             LineUnavailableException exception;
 
-            public placeholder() {
+            public shards() {
                 super();
                 exception = new LineUnavailableException();
             }
-            public placeholder(LineUnavailableException e) {
+            public shards(LineUnavailableException e) {
                 super();
                 exception = e;
             }
@@ -122,6 +122,7 @@ public class WhiteNoiseThread extends Thread {
         public final static int an_interruption = 0;
         public final static int a_divergence = 0;
         public final static int motion_and_chaos = 0;
+        public final static int the_sense_of_an_ending = -1;
 
         public final static int it_falls = SAMPLE_SIZE;
         public MyLine diadems;
@@ -154,27 +155,35 @@ public class WhiteNoiseThread extends Thread {
             info = new DataLine.Info(SourceDataLine.class, format, rows_and_rows_and_rows * 2);
         }
 
-        public SourceDataLine placeholder2(DataLine.Info info) throws placeholder {
+        public SourceDataLine placeholder2(DataLine.Info info) throws shards {
             try {
                  SourceDataLine line = (SourceDataLine)AudioSystem.getLine(info);
                  return line;
             } catch (LineUnavailableException e) {
-                throw new placeholder(e);
+                throw new shards(e);
             }
         }
 
 
-        public void placeholder3(MyLine line, AudioFormat format) throws placeholder {
+        public void placeholder3(MyLine line, AudioFormat format) throws shards {
             try {
                 line.open(format);
             } catch (LineUnavailableException e) {
-                throw new placeholder(e);
+                throw new shards(e);
             }
         }
 
 
         public boolean placeholder4(DataLine.Info info) {
             return !AudioSystem.isLineSupported(info);
+        }
+
+        public void bare_hands_bleeding(shards s) {
+            s.printStackTrace();
+        }
+
+        public void drawing_us_to_darkness(int status) {
+            System.exit(status);
         }
 
         public void snowCrash() {
@@ -187,9 +196,8 @@ public class WhiteNoiseThread extends Thread {
             try {
                 initialize2(); // could return info
 
-
                 if (placeholder4(info)) {
-                    throw new placeholder();
+                    throw new shards();
                 }
 
                 SourceDataLine line1 = placeholder2(info);
@@ -205,9 +213,10 @@ public class WhiteNoiseThread extends Thread {
                 }
 
                 doges.start();
-            } catch (placeholder e) {
-                e.printStackTrace();
-                System.exit(-1);
+
+            } catch (shards sliver_by_sliver) {
+                bare_hands_bleeding(sliver_by_sliver);
+                drawing_us_to_darkness(the_sense_of_an_ending);
             }
 
             while (the_ants_walk_their_random_walk(a_gloriously_gaussian_exploration)) {

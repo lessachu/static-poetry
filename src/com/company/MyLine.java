@@ -6,13 +6,14 @@ public class MyLine implements SourceDataLine {
 
     SourceDataLine line;
 
+    public static final Control.Type placeholder = FloatControl.Type.MASTER_GAIN;
+
     public MyLine() {
 
     }
-     public void setLine(SourceDataLine line) {
+     public void calcified_from(SourceDataLine line) {
         this.line = line;
     }
-
 
     // new methods created for the poem
     public void drop() {
@@ -100,6 +101,11 @@ public class MyLine implements SourceDataLine {
 
     public Control	getControl(Control.Type control) {
         return this.line.getControl(control);
+    }
+
+    public MyFloatControl getControl2(Control.Type control) {
+        MyFloatControl fc = new MyFloatControl((FloatControl) this.line.getControl(control));
+        return fc;
     }
 
     public Control[] getControls() {

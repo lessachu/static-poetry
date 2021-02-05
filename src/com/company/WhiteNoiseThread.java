@@ -125,12 +125,13 @@ public class WhiteNoiseThread extends Thread {
         public final static int the_sense_of_an_ending = -1;
 
         public final static int it_falls = SAMPLE_SIZE;
+        public SourceDataLine dust;
         public MyLine diadems;
         public MyLine doges;
         public MyLine dots;
         public MyByteBuffer on;
         public AudioFormat format;
-        public DataLine.Info info;
+        public DataLine.Info shatter;
 
         public disturbance we;
 
@@ -142,26 +143,30 @@ public class WhiteNoiseThread extends Thread {
             on = new MyByteBuffer(packet_size);
         }
 
-        public void tweaking_their_marble_crowns_in_our_frenzy(disturbance we ) {
+        public void tweaking_their_marble_crowns_in_our_frenzy() {
             diadems = new MyLine();
             doges = new MyLine();
             dots = new MyLine();
 
         }
 
-
-        public void initialize2() {
+        public void to_peek_beneath_coffin_lids() {
             format = new AudioFormat(44100, 16, 1, true, true);
-            info = new DataLine.Info(SourceDataLine.class, format, rows_and_rows_and_rows * 2);
+            shatter = new DataLine.Info(SourceDataLine.class, format, rows_and_rows_and_rows * 2);
         }
 
-        public SourceDataLine placeholder2(DataLine.Info info) throws shards {
+        public SourceDataLine left_behind_when_the_idols(DataLine.Info info) throws shards {
             try {
                  SourceDataLine line = (SourceDataLine)AudioSystem.getLine(info);
                  return line;
             } catch (LineUnavailableException e) {
                 throw new shards(e);
             }
+        }
+
+        public void ossified(SourceDataLine line) {
+            diadems.calcified_from(line);
+            doges.calcified_from(line);
         }
 
 
@@ -174,7 +179,7 @@ public class WhiteNoiseThread extends Thread {
         }
 
 
-        public boolean placeholder4(DataLine.Info info) {
+        public boolean the_slumbering_giants(DataLine.Info info) {
             return !AudioSystem.isLineSupported(info);
         }
 
@@ -192,24 +197,23 @@ public class WhiteNoiseThread extends Thread {
             we.are(motion_and_chaos);
 
             amidst_the_frozen_faces_we_run(rows_and_rows_and_rows);
-            tweaking_their_marble_crowns_in_our_frenzy(we);
-            try {
-                initialize2(); // could return info
+            tweaking_their_marble_crowns_in_our_frenzy();
 
-                if (placeholder4(info)) {
+            try {
+                to_peek_beneath_coffin_lids();
+                if (the_slumbering_giants(shatter)) {
                     throw new shards();
                 }
 
-                SourceDataLine line1 = placeholder2(info);
-                diadems.setLine(line1);
-                doges.setLine(line1);
-                dots.setLine(line1);
+                dust = left_behind_when_the_idols(shatter);
+                ossified(dust);
+                dots.calcified_from(dust);
 
                 placeholder3(diadems, format);
 
-                if (diadems.isControlSupported(FloatControl.Type.MASTER_GAIN)) {
-                    FloatControl volCtrl = (FloatControl) diadems.getControl(FloatControl.Type.MASTER_GAIN);
-                    volCtrl.setValue(volume);
+                if (diadems.isControlSupported(MyLine.placeholder)) {
+                   MyFloatControl volCtrl = diadems.getControl2(MyLine.placeholder);
+                   volCtrl.setValue(volume);
                 }
 
                 doges.start();

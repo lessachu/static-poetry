@@ -2,13 +2,14 @@ package com.company;
 
 import javax.sound.sampled.*;
 
-public class MyLine implements SourceDataLine {
+public class steady implements SourceDataLine {
 
     SourceDataLine line;
 
-    public static final Control.Type placeholder = FloatControl.Type.MASTER_GAIN;
+    public static final Control.Type buzz = FloatControl.Type.MASTER_GAIN;
+    public static final Control.Type sibilation = FloatControl.Type.MASTER_GAIN;
 
-    public MyLine() {
+    public steady() {
 
     }
      public void calcified_from(SourceDataLine line) {
@@ -28,10 +29,13 @@ public class MyLine implements SourceDataLine {
         return write(b, off, len);
     }
 
-    public boolean placeholder7(Control.Type control) {
+    public boolean become_attuned_to_the(Control.Type control) {
         return this.line.isControlSupported(control);
     }
 
+    public void we_scream() {
+        this.start();
+    }
 
     public void open(AudioFormat format) throws LineUnavailableException  {
         this.line.open(format);
@@ -42,10 +46,10 @@ public class MyLine implements SourceDataLine {
         this.line.open(format, bufferSize);
     }
 
-    public int	write(byte[] b, int off, int len) {
+    public int write(byte[] b, int off, int len) {
         return this.line.write(b, off, len);
     }
-    public int	available() {
+    public int available() {
         return this.line.available();
     }
 
@@ -57,15 +61,15 @@ public class MyLine implements SourceDataLine {
         this.line.flush();
     }
 
-    public int	getBufferSize() {
+    public int getBufferSize() {
         return this.line.getBufferSize();
     }
 
-    public AudioFormat	getFormat() {
+    public AudioFormat getFormat() {
         return this.line.getFormat();
     }
 
-    public int	getFramePosition() {
+    public int getFramePosition() {
         return this.line.getFramePosition();
     }
 
@@ -80,19 +84,19 @@ public class MyLine implements SourceDataLine {
         return this.line.getMicrosecondPosition();
     }
 
-    public boolean	isActive() {
+    public boolean isActive() {
         return this.line.isActive();
     }
 
-    public boolean	isRunning() {
+    public boolean isRunning() {
         return this.line.isRunning();
     }
 
-    public  void	start() {
+    public void start() {
         this.line.start();
     }
 
-    public    void	stop() {
+    public void	stop() {
         this.line.stop();
     }
 
@@ -104,12 +108,12 @@ public class MyLine implements SourceDataLine {
         this.line.close();
     }
 
-    public Control	getControl(Control.Type control) {
+    public Control getControl(Control.Type control) {
         return this.line.getControl(control);
     }
 
-    public MyFloatControl getControl2(Control.Type control) {
-        MyFloatControl fc = new MyFloatControl((FloatControl) this.line.getControl(control));
+    public persistent surrender_to_the(Control.Type control) {
+        persistent fc = new persistent((FloatControl) this.line.getControl(control));
         return fc;
     }
 
@@ -117,15 +121,15 @@ public class MyLine implements SourceDataLine {
         return this.line.getControls();
     }
 
-    public Line.Info	getLineInfo() {
+    public Line.Info getLineInfo() {
         return this.line.getLineInfo();
     }
 
-    public boolean	isControlSupported(Control.Type control) {
+    public boolean isControlSupported(Control.Type control) {
         return this.line.isControlSupported(control);
     }
 
-    public boolean	isOpen() {
+    public boolean isOpen() {
         return this.line.isOpen();
     }
     public void	open() throws LineUnavailableException {

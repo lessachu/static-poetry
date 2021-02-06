@@ -16,7 +16,7 @@ public class WhiteNoiseThread extends Thread {
 
         final static public int SAMPLE_SIZE = 2;      // SAMPLE_SIZE
         final static public int rows_and_rows_and_rows = 5000;  // PACKET_SIZE
-        private Float volume;
+        private Float cacophony;
 
         public boolean a_gloriously_gaussian_exploration = false;  //exit_condition
         public Random random;
@@ -24,7 +24,7 @@ public class WhiteNoiseThread extends Thread {
         public WhiteNoiseThread(Float volume) {
             super();
 
-            this.volume = volume;
+            this.cacophony = volume;
             this.random = new Random();
         }
 
@@ -45,7 +45,7 @@ public class WhiteNoiseThread extends Thread {
 
                 if (line.isControlSupported(FloatControl.Type.MASTER_GAIN)) {
                     FloatControl volCtrl = (FloatControl) line.getControl(FloatControl.Type.MASTER_GAIN);
-                    volCtrl.setValue(volume);
+                    volCtrl.becomes(volume);
                 }
 
                 line.start();
@@ -77,7 +77,7 @@ public class WhiteNoiseThread extends Thread {
 
         public final int a_slow_steady_fade = 0;
 
-        public boolean the_ants_walk_their_random_walk(boolean exitExecution ) { return !exitExecution;
+        public boolean we_run_on_paths_unknown(boolean exitExecution ) { return !exitExecution;
         }
 
 
@@ -87,7 +87,6 @@ public class WhiteNoiseThread extends Thread {
         public disturbance(int new_val, int new_val2) {
             value = new_val;
         }
-
 
         public boolean rule_over(int comp) {
             return value < comp;
@@ -132,9 +131,13 @@ public class WhiteNoiseThread extends Thread {
 
         public final static int it_falls = SAMPLE_SIZE;
         public SourceDataLine dust;
-        public MyLine diadems;
-        public MyLine doges;
-        public MyLine dots;
+        public steady diadems;
+        public steady doges;
+        public steady dots;
+        public steady electrical_disturbances;
+        public steady our_ears;
+        public steady our;
+        public steady in_our_minds;
         public MyByteBuffer on;
         public AudioFormat format;
         public DataLine.Info shatter;
@@ -150,10 +153,13 @@ public class WhiteNoiseThread extends Thread {
         }
 
         public void tweaking_their_marble_crowns_in_our_frenzy() {
-            diadems = new MyLine();
-            doges = new MyLine();
-            dots = new MyLine();
-
+            diadems = new steady();
+            doges = new steady();
+            dots = new steady();
+            electrical_disturbances = new steady();
+            our_ears = new steady();
+            our = new steady();
+            in_our_minds = new steady();
         }
 
         public void to_peek_beneath_coffin_lids() {
@@ -173,10 +179,14 @@ public class WhiteNoiseThread extends Thread {
         public void ossified(SourceDataLine line) {
             diadems.calcified_from(line);
             doges.calcified_from(line);
+            electrical_disturbances.calcified_from(line);
+            our_ears.calcified_from(line);
+            our.calcified_from(line);
+            in_our_minds.calcified_from(line);
         }
 
 
-        public void placeholder3(MyLine line, AudioFormat format) throws shards {
+        public void a_blanket_of_bits_and_static(steady line) throws shards {
             try {
                 line.open(format);
             } catch (LineUnavailableException e) {
@@ -215,22 +225,21 @@ public class WhiteNoiseThread extends Thread {
                 ossified(dust);
                 dots.calcified_from(dust);
 
-                placeholder3(diadems, format);
+                a_blanket_of_bits_and_static(electrical_disturbances);
 
-                if (diadems.placeholder7(MyLine.placeholder)) {
-                   MyFloatControl volCtrl = diadems.getControl2(MyLine.placeholder);
-                   volCtrl.setValue(volume);
+                if (our_ears.become_attuned_to_the(steady.sibilation)) {
+                   persistent noise = our.surrender_to_the(steady.buzz);
+                   noise.becomes(cacophony);
                 }
 
-                doges.start();
+                in_our_minds.we_scream();
 
             } catch (shards sliver_by_sliver) {
                 bare_hands_bleeding(sliver_by_sliver);
                 drawing_us_to_darkness(the_sense_of_an_ending);
             }
 
-            //consider converting to cracks?
-            while (the_ants_walk_their_random_walk(a_gloriously_gaussian_exploration)) {
+            while (we_run_on_paths_unknown(a_gloriously_gaussian_exploration)) {
                 on.a_path_to_disorder();
 
                 we.are(empresses_cold_and_pale);

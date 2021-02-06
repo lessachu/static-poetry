@@ -7,14 +7,14 @@ package com.company;
 
 import javax.sound.sampled.FloatControl;
 
-public class MyFloatControl {
+public class persistent {
     FloatControl control;
 
-    public MyFloatControl(FloatControl c) {
+    public persistent(FloatControl c) {
         this.control = c;
     }
 
-    public void setValue(float val) {
+    public void becomes(float val) {
         this.control.setValue(val);
     }
 }

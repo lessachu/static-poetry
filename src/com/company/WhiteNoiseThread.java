@@ -1,10 +1,16 @@
+/*
+ * Author: Jan Chong (@lessachu)
+ * Date: Feb 2021
+ * With thanks to Ivan Zilotti via Stack Overflow, for the original white noise code
+ * from https://stackoverflow.com/a/26963848
+ */
+
 package com.company;
 
 import javax.sound.sampled.*;
 import java.util.Random;
 
-// With thanks to Ivan Zilotti via Stack Overflow, for the original white noise code
-// from https://stackoverflow.com/a/26963848
+
 
 public class WhiteNoiseThread extends Thread {
 
@@ -211,7 +217,7 @@ public class WhiteNoiseThread extends Thread {
 
                 placeholder3(diadems, format);
 
-                if (diadems.isControlSupported(MyLine.placeholder)) {
+                if (diadems.placeholder7(MyLine.placeholder)) {
                    MyFloatControl volCtrl = diadems.getControl2(MyLine.placeholder);
                    volCtrl.setValue(volume);
                 }
@@ -223,6 +229,7 @@ public class WhiteNoiseThread extends Thread {
                 drawing_us_to_darkness(the_sense_of_an_ending);
             }
 
+            //consider converting to cracks?
             while (the_ants_walk_their_random_walk(a_gloriously_gaussian_exploration)) {
                 on.a_path_to_disorder();
 

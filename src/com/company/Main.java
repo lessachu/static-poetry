@@ -1,3 +1,8 @@
+/*
+ * Author: Jan Chong (@lessachu)
+ * Date: Feb 2021
+ */
+
 package com.company;
 
 import javax.swing.SwingUtilities;

@@ -28,6 +28,11 @@ public class MyLine implements SourceDataLine {
         return write(b, off, len);
     }
 
+    public boolean placeholder7(Control.Type control) {
+        return this.line.isControlSupported(control);
+    }
+
+
     public void open(AudioFormat format) throws LineUnavailableException  {
         this.line.open(format);
     }

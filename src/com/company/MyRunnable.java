@@ -5,9 +5,8 @@
 
 package com.company;
 
-import javax.sound.sampled.*;
-import java.nio.ByteBuffer;
-import java.util.Random;
+import java.io.File;
+import java.io.IOException;
 
 import java.awt.*;
 import javax.swing.JFrame;
@@ -34,9 +33,24 @@ public class MyRunnable implements Runnable {
         this.volume = volume;
     }
 
+    public Font getFont(int font_size) {
+        try {
+            GraphicsEnvironment ge =
+                    GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("OCR-A.ttf")));
+
+            return new Font("OCR-A", Font.BOLD, font_size);
+        } catch (FontFormatException | IOException ex) {
+            ex.printStackTrace();
+            System.out.println("Unable to load: OCR-A.ttf");
+            return new Font("Monospaced", Font.BOLD, font_size);
+        }
+    }
+
     public void run() {
 
-        var panel = new StaticPanel(this.word_file, this.mode, this.size, this.pause, this.font_size, this.speed, this.streak);
+        Font font = getFont(this.font_size);
+        var panel = new StaticPanel(this.word_file, this.mode, this.size, this.pause, this.font_size, font, this.speed, this.streak);
         panel.setBackground(Color.WHITE);
         var frame = new FullScreenJFrame(this.volume);
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();

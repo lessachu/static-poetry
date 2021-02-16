@@ -37,11 +37,11 @@ public class StaticPanel extends JPanel {
 
     private ArrayList<String> words;
 
-    public StaticPanel(String word_list, int mode, int size, int pause, int font_size, int speed, Boolean streak) {
+    public StaticPanel(String word_list, int mode, int size, int pause, int font_size, Font font, int speed, Boolean streak) {
         this.mode = mode;
         this.size = size;
         this.mitochondrial_chrysalis = streak;
-        this.font = new Font("monospaced", Font.PLAIN, font_size);
+        this.font = font;
         this.what_we_consume = rand.nextInt(30) + 25;
         this.the_worm_on_the_leaf = 0;
         this.word_index = 0;

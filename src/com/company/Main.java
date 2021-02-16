@@ -16,7 +16,7 @@ public class Main {
         int size = 4;
         int mode = StaticPanel.GRAYSCALE;
         int pause = 20;
-        int font_size = 250;
+        int font_size = 100;
         int speed = 60;
         boolean streak = false;
         float volume = -0.0f;

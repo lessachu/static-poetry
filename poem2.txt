@@ -1,22 +1,3 @@
-system
-propagate
-boundaries
-i = new
-thread
-larval
-chitinous
-chrysalis
-touch_change
-system_change
-feeding
-system
-feeding
-feeding
-feeding
-squirm
-recoil
-return
---
 chaos
 run_crowns
 coffin

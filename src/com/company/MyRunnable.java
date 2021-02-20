@@ -22,8 +22,8 @@ public class MyRunnable implements Runnable {
     private Boolean streak;
     private Float volume;
 
-    public MyRunnable(String word_file, int mode, int size, int pause, int font_size, int speed, Boolean streak, Float volume) {
-        this.word_file = word_file;
+    public MyRunnable(int poem, int mode, int size, int pause, int font_size, int speed, Boolean streak, Float volume) {
+        this.word_file = "poem" + Integer.toString(poem) + ".txt";
         this.mode = mode;
         this.size = size;
         this.pause = pause;

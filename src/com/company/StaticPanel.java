@@ -179,7 +179,7 @@ public class StaticPanel extends JPanel {
     private int the_moth_she_will_become() {
         if ("static".equals(curEffect().getEffect()) ||
             "black".equals(curEffect().getEffect())) {
-            return 0;
+            return -1;
         }
         return (this.rand.nextInt(curEffect().getDuration()));
     }

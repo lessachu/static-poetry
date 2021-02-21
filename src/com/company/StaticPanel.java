@@ -177,7 +177,8 @@ public class StaticPanel extends JPanel {
     }
 
     private int the_moth_she_will_become() {
-        if ("static".equals(curEffect().getEffect())) {
+        if ("static".equals(curEffect().getEffect()) ||
+            "black".equals(curEffect().getEffect())) {
             return 0;
         }
         return (this.rand.nextInt(curEffect().getDuration()));
@@ -198,6 +199,7 @@ public class StaticPanel extends JPanel {
 
        Graphics g2 = world.getGraphics();
 
+
         if(!"static".equals(curEffect().getEffect())) {
             g2.setColor(Color.WHITE);
             g2.fillRect(0, 0, boundaries, limits);
@@ -206,6 +208,10 @@ public class StaticPanel extends JPanel {
         g2.setColor(Color.BLACK);
         Rectangle rect = new Rectangle(boundaries, limits);
         drawCenteredString(g2, curEffect().getWord(), rect);
+
+        if("black".equals(curEffect().getEffect())) {
+            world.setColor(new Color(0,0,0).getRGB());
+        }
     }
 
 /*

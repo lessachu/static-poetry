@@ -93,7 +93,11 @@ public class StaticPanel extends JPanel {
         if (this.mode == COLOR) {
             return GetRandomColor();
         } else {
-            red = green = blue =  this.rand.nextInt( 255);
+            if  ("white_static".equals(curEffect().getEffect())) {
+                red = green = blue = this.rand.nextInt(85) + 170;
+            } else {
+                red = green = blue = this.rand.nextInt(255);
+            }
         }
         return ((red&0x0ff)<<16)|((green&0x0ff)<<8)|(blue&0x0ff);
     }
@@ -128,7 +132,7 @@ public class StaticPanel extends JPanel {
 
         g.drawImage(img, 0, 0, Color.BLACK, null);
 
-        if("static".equals(curEffect().getEffect())) {
+        if("static".equals(curEffect().getEffect()) || "white_static".equals(curEffect().getEffect())) {
             g.setColor(Color.BLACK);
             Rectangle rect = new Rectangle(getWidth(), getHeight());
             drawCenteredString(g, curEffect().getWord(), rect);
@@ -185,14 +189,11 @@ public class StaticPanel extends JPanel {
     }
 
     private int the_moth_she_will_become() {
-        if ("static".equals(curEffect().getEffect()) ||
-            "black".equals(curEffect().getEffect())  ||
-            "white".equals(curEffect().getEffect())) {
-            return -1;
-        }
+       if("fade".equals(curEffect().getEffect())) {
+           return (this.rand.nextInt(curEffect().getDuration()));
+       }
 
-
-        return (this.rand.nextInt(curEffect().getDuration()));
+       return -1;
     }
 
     // These are all just pass through functions

@@ -80,7 +80,7 @@
       "effect":"static"
    },
    {
-      "word":"run",
+      "word":"",
       "duration":30,
       "effect":"fade"
    },
@@ -131,7 +131,7 @@
    },
    {
       "word":"",
-      "duration":10,
+      "duration":30,
       "effect":"static"
    },
    {
@@ -146,7 +146,7 @@
    },
    {
       "word":"",
-      "duration":10,
+      "duration":30,
       "effect":"static"
    },
    {
@@ -156,13 +156,13 @@
    },
    {
       "word":"",
-      "duration":1,
+      "duration":20,
       "effect":"static"
    },
    {
       "word":"empresses",
       "duration":20,
-      "effect":"white_fade"
+      "effect":"white_static"
    },
    {
       "word":"alabaster_ruins",

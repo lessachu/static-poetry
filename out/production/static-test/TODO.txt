@@ -1,10 +1,9 @@
 * Configure build to move font to the right place in the output dir
 * Support white flash
 * Support white static
-* Why does the current font not support underscores
-
 
 DONE:
+* Found a better OCR-A font file
 * JSON file configuration of effects sequence
 * Support two modes
 * Fixed the unintentional white flash

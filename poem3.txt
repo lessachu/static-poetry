@@ -1,9 +1,14 @@
 [
    {
       "word":"",
-      "duration":15,
-      "effect":"static"
+      "duration":60,
+      "effect":"white_static"
    },
+      {
+         "word":"white_static",
+         "duration":60,
+         "effect":"white_static"
+      },
    {
       "word":"TEST-test = 1",
       "duration":15,

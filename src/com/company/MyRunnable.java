@@ -66,9 +66,10 @@ public class MyRunnable implements Runnable {
 
         for(Effect word : words) {
             System.out.println(word.getWord());
+            System.out.println("duration: " + Integer.toString(word.getDuration()));
         }
 
-        var panel = new StaticPanel(this.word_file + "-words.txt", this.mode, this.size, this.pause, this.font_size, font, this.speed, this.streak);
+        var panel = new StaticPanel(words, this.mode, this.size, this.pause, this.font_size, font, this.speed, this.streak);
         panel.setBackground(Color.WHITE);
         var frame = new FullScreenJFrame(this.volume);
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();

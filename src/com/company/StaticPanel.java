@@ -35,9 +35,9 @@ public class StaticPanel extends JPanel {
     private int word_index;
     private final Random rand = new Random();
 
-    private ArrayList<String> words;
+    private ArrayList<Effect> effects;
 
-    public StaticPanel(String word_list, int mode, int size, int pause, int font_size, Font font, int speed, Boolean streak) {
+    public StaticPanel(ArrayList<Effect> effects, int mode, int size, int pause, int font_size, Font font, int speed, Boolean streak) {
         this.mode = mode;
         this.size = size;
         this.mitochondrial_chrysalis = streak;
@@ -45,23 +45,7 @@ public class StaticPanel extends JPanel {
         this.what_we_consume = rand.nextInt(30) + 25;
         this.the_worm_on_the_leaf = 0;
         this.word_index = 0;
-        this.words = new ArrayList<>();
-
-        try (BufferedReader br = new BufferedReader(new FileReader(word_list))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-               this.words.add(line);
-            }
-        } catch (Exception e) {
-          System.out.println("Error reading from file: " + word_list);
-            this.words.add("snowcrash");
-            this.words.add("chitinous");
-            this.words.add("system");
-            this.words.add("you");
-            this.words.add("change");
-            this.words.add("nothing");
-        }
-
+        this.effects = effects;
 
         Timer timer = new Timer(speed, new ActionListener(){
             @Override
@@ -75,7 +59,7 @@ public class StaticPanel extends JPanel {
                     }
                 }
 
-                if(word_index > words.size()-1) {
+                if(word_index > effects.size()-1) {
                     word_index = 0;
                 }
 
@@ -226,7 +210,7 @@ public class StaticPanel extends JPanel {
 
         g2.setColor(Color.BLACK);
         Rectangle rect = new Rectangle(boundaries, limits);
-        drawCenteredString(g2, words.get(word_index), rect);
+        drawCenteredString(g2, this.effects.get(this.word_index).getWord(), rect);
     }
 
 

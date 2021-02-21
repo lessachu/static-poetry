@@ -1,14 +1,13 @@
 * Configure build to move font to the right place in the output dir
-* Support duration
-* Support effect configuration
-* Support white flashes
-* Support black
+* Support white flash
 * Support white static
-* The font displays underscores as dashes
+* Why does the current font not support underscores
+
 
 DONE:
-* Read poem config in from json
+* JSON file configuration of effects sequence
 * Support two modes
+* Fixed the unintentional white flash
 * Read in words from a file
 * Dynamically handle it if the word is bigger than the screen
 * Support true fullscreen mode

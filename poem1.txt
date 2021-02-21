@@ -6,12 +6,12 @@
          "effect":"static"
       },
       {
-               "word":"test",
+               "word":"TEST-test = 1",
                "duration":15,
                "effect":"static"
        },
              {
-                      "word":"fast",
+                      "word":"fast_test",
                       "duration":15,
                       "effect":"fade"
               },

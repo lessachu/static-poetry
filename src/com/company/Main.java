@@ -14,7 +14,6 @@ public class Main {
     public static void main(String[] args) {
         int size = 4;
         int mode = StaticPanel.GRAYSCALE;
-        int pause = 20;
         int font_size = 100;
         int poem = 1;
         int speed = 60;
@@ -39,10 +38,6 @@ public class Main {
 
        if (argsMap.get("--color") != null) {
            mode = StaticPanel.COLOR;
-       }
-
-       if (argsMap.get("--pause") != null) {
-            pause = Integer.parseInt(argsMap.get("--pause"));
        }
 
         if (argsMap.get("--font_size") != null) {
@@ -71,7 +66,6 @@ public class Main {
             System.out.println("--word_file=[text] sets the file to read words from (poem1.txt by default)");
             System.out.println("--size=[number] sets the size of each pixel");
             System.out.println("--color populates the randomly with color");
-            System.out.println("--pause=[number] sets the number of frames to pause before showing the next word");
             System.out.println("--font_size=[number] sets the font size of the word");
             System.out.println("--poem=[number] switches between poem 1 or 2");
             System.out.println("--speed=[number] sets the speed of the overall animation");
@@ -80,6 +74,6 @@ public class Main {
             return;
         }
 
-        SwingUtilities.invokeLater(new MyRunnable(poem, mode, size, pause, font_size, speed, streak, volume));
+        SwingUtilities.invokeLater(new MyRunnable(poem, mode, size, font_size, speed, streak, volume));
     }
 }

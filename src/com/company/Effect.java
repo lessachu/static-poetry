@@ -3,10 +3,10 @@ package com.company;
 public class Effect {
     private String word;
     private int duration;
+    private int pause;
     private String effect;
-    private String flash;
 
-    public Effect() {}
+    public Effect() {  this.pause = 0; }
 
     public String getWord() {
         return word;
@@ -32,12 +32,12 @@ public class Effect {
         this.effect = effect;
     }
 
-    public String getFlash() {
-        return flash;
+    public int getPause() {
+        return pause;
     }
 
-    public void setFlash(String flash) {
-        this.flash = flash;
+    public void setPause(int pause) {
+        this.pause = pause;
     }
 
 

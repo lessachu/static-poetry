@@ -87,32 +87,77 @@
    {
       "word":"run",
       "duration":30,
-      "effect":"static",
-      "flash":"white"
+      "effect":"static"
+   },
+   {
+      "word":"",
+      "duration":1,
+      "effect":"white"
+   },
+   {
+      "word":"",
+      "duration":1,
+      "effect":"static"
    },
    {
       "word":"run",
       "duration":30,
-      "effect":"static",
-      "flash":"white"
+      "effect":"static"
+   },
+   {
+      "word":"",
+      "duration":1,
+      "effect":"white"
+   },
+   {
+      "word":"",
+      "duration":1,
+      "effect":"static"
    },
    {
       "word":"run",
       "duration":30,
-      "effect":"static",
-      "flash":"white"
+      "effect":"static"
+   },
+   {
+      "word":"",
+      "duration":1,
+      "effect":"white"
+   },
+   {
+      "word":"",
+      "duration":1,
+      "effect":"static"
    },
    {
       "word":"",
       "duration":10,
-      "effect":"static",
-      "flash":"white"
+      "effect":"static"
+   },
+   {
+      "word":"",
+      "duration":1,
+      "effect":"white"
+   },
+   {
+      "word":"",
+      "duration":1,
+      "effect":"static"
    },
    {
       "word":"",
       "duration":10,
-      "effect":"static",
-      "flash":"white"
+      "effect":"static"
+   },
+   {
+      "word":"",
+      "duration":1,
+      "effect":"white"
+   },
+   {
+      "word":"",
+      "duration":1,
+      "effect":"static"
    },
    {
       "word":"empresses",

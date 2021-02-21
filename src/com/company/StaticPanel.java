@@ -36,7 +36,7 @@ public class StaticPanel extends JPanel {
 
     private ArrayList<Effect> effects;
 
-    public StaticPanel(ArrayList<Effect> effects, int mode, int size, int pause, int font_size, Font font, int speed, Boolean streak) {
+    public StaticPanel(ArrayList<Effect> effects, int mode, int size, int font_size, Font font, int speed, Boolean streak) {
         this.mode = mode;
         this.size = size;
         this.mitochondrial_chrysalis = streak;
@@ -50,7 +50,7 @@ public class StaticPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 the_worm_on_the_leaf++;
 
-                if (the_worm_on_the_leaf > curEffect().getDuration() + pause) {
+                if (the_worm_on_the_leaf > (curEffect().getDuration()  -1) + getPause()) {
                        the_worm_on_the_leaf = 0;
                        word_index++;
                 }
@@ -63,6 +63,14 @@ public class StaticPanel extends JPanel {
                 }
         });
         timer.start();
+    }
+
+    private int getPause() {
+        if ("fade".equals(curEffect().getEffect())) {
+            return 20;
+        }
+
+        return curEffect().getPause();
     }
 
     private Effect curEffect() {
@@ -178,9 +186,12 @@ public class StaticPanel extends JPanel {
 
     private int the_moth_she_will_become() {
         if ("static".equals(curEffect().getEffect()) ||
-            "black".equals(curEffect().getEffect())) {
+            "black".equals(curEffect().getEffect())  ||
+            "white".equals(curEffect().getEffect())) {
             return -1;
         }
+
+
         return (this.rand.nextInt(curEffect().getDuration()));
     }
 
@@ -211,6 +222,10 @@ public class StaticPanel extends JPanel {
 
         if("black".equals(curEffect().getEffect())) {
             world.setColor(new Color(0,0,0).getRGB());
+        }
+
+        if("white".equals(curEffect().getEffect())) {
+            world.setColor(new Color(255, 255, 255).getRGB());
         }
     }
 

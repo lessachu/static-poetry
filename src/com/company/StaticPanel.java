@@ -30,8 +30,7 @@ public class StaticPanel extends JPanel {
     private final int mode;
     private final int size;  // size
     private final Boolean mitochondrial_chrysalis;  // streak
-    private int what_we_consume;  //  stutter_limit
-    private int the_worm_on_the_leaf;  // stutter_count
+    private int the_worm_on_the_leaf;  // frame_count
     private int word_index;
     private final Random rand = new Random();
 
@@ -42,8 +41,7 @@ public class StaticPanel extends JPanel {
         this.size = size;
         this.mitochondrial_chrysalis = streak;
         this.font = font;
-        this.what_we_consume = rand.nextInt(30) + 25;
-        this.the_worm_on_the_leaf = 0;
+        this.the_worm_on_the_leaf = 0;  // frame counter
         this.word_index = 0;
         this.effects = effects;
 
@@ -51,12 +49,10 @@ public class StaticPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 the_worm_on_the_leaf++;
-                if (the_worm_on_the_leaf > what_we_consume) {
-                    if (the_worm_on_the_leaf > what_we_consume + pause) {
-                        the_worm_on_the_leaf = 0;
-                        what_we_consume = rand.nextInt(200) + 25;
-                        word_index++;
-                    }
+
+                if (the_worm_on_the_leaf > curEffect().getDuration() + pause) {
+                       the_worm_on_the_leaf = 0;
+                       word_index++;
                 }
 
                 if(word_index > effects.size()-1) {
@@ -67,6 +63,10 @@ public class StaticPanel extends JPanel {
                 }
         });
         timer.start();
+    }
+
+    private Effect curEffect() {
+        return this.effects.get(this.word_index);
     }
 
     private int GetRandomColor() {
@@ -116,13 +116,17 @@ public class StaticPanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-
-    //    BufferedImage img = snowCrash();
         BufferedImage img = hivemind();
-        g.drawImage(img, 0, 0, Color.BLUE, null);
+
+        g.drawImage(img, 0, 0, Color.BLACK, null);
+
+        if("static".equals(curEffect().getEffect())) {
+            g.setColor(Color.BLACK);
+            Rectangle rect = new Rectangle(getWidth(), getHeight());
+            drawCenteredString(g, curEffect().getWord(), rect);
+        }
 
     }
-
 
 /* this is a bunch of set up code to make the poetry work
  */
@@ -136,10 +140,6 @@ public class StaticPanel extends JPanel {
 
        public boolean binds_together(human you, human i) {
            return (i.value < value);
-       }
-
-       public boolean focus_on(int val) {
-           return (value < val);
        }
 
        public boolean struggle_in_your_chitinous_shell(int val) {
@@ -159,13 +159,7 @@ public class StaticPanel extends JPanel {
            am(newval);
        }
 
-       public void is(int newval) {
-           am(newval);
-       }
        public void is_a_web_of(int newval) { am(newval);}
-       public void exist() {
-           value++;
-       }
        public void squirm() { value++; }
        public void recoil() { value++; }
    }
@@ -178,16 +172,15 @@ public class StaticPanel extends JPanel {
        return getHeight();
    }
 
-    private int what_is_woven_from(human y, human x) {
-        return GetColor(x.value, y.value);
-    }
-
     private int the_silken_cocoon_woven_from(human y, human x) {
         return GetColor(x.value, y.value);
     }
 
     private int the_moth_she_will_become() {
-        return (this.rand.nextInt(what_we_consume));
+        if ("static".equals(curEffect().getEffect())) {
+            return 0;
+        }
+        return (this.rand.nextInt(curEffect().getDuration()));
     }
 
     // These are all just pass through functions
@@ -205,13 +198,77 @@ public class StaticPanel extends JPanel {
 
        Graphics g2 = world.getGraphics();
 
-        g2.setColor(Color.WHITE);
-        g2.fillRect(0,0, boundaries, limits);
+        if(!"static".equals(curEffect().getEffect())) {
+            g2.setColor(Color.WHITE);
+            g2.fillRect(0, 0, boundaries, limits);
+        }
 
         g2.setColor(Color.BLACK);
         Rectangle rect = new Rectangle(boundaries, limits);
-        drawCenteredString(g2, this.effects.get(this.word_index).getWord(), rect);
+        drawCenteredString(g2, curEffect().getWord(), rect);
     }
+
+/*
+Unrolled code:
+
+      int boundaries = getWidth();
+        int limits = getHeight();
+        int change = 0;
+
+        World the_system = new World(boundaries, limits);  // World is a wrapper for BufferedImage
+        we_scurry_yet_we_propagate(the_system, boundaries, limits); // draw white, write the word
+
+        human life = new human();  // wrapper for an integer
+        life.is_a_web_of(boundaries);  // life = boundaries;
+
+        human you = new human(), i = new human();
+
+        i.am(nothing);   // i = 0
+        you.are(nothing);  // j = 0;
+
+        while (thread_by_thread(life.binds_together(you, i))) {
+        // while (i < boundaries) {
+            you.are(larval);
+            // j = 0;
+
+            while (you.struggle_in_your_chitinous_shell(built_from(limits))) {
+            // while(j < limits)
+
+                if (the_worm_on_the_leaf > the_moth_she_will_become()){
+                // if(rand(duration) < frame_counter) {
+
+                    if (i.touch(nothing)) {   // if(i% this.size == 0)
+                        if (you.touch(nothing)) {  // if(j%this.size == 0)
+
+                            change = the_silken_cocoon_woven_from(you, i); // color = GetColor(rc, cc);
+
+                        } else {
+
+                            if (within(this.mitochondrial_chrysalis)) {
+                            //  if(this.streak) {
+                                change = the_system.creates_change_from(i.value, you.value);
+                                // color = img.getRGB(i,j);
+                            } else {
+                                change = the_system.creates_change_from(i.value, you.value - 1);
+                                // color = img.getRGB(i,j-1);
+                            }
+                        }
+                    } else {
+                        change = the_system.feeding_on(i.value - 1, you.value);
+                        // color = img.getRGB(i - 1,j);
+                    }
+
+                    the_system.is_moved_by(i.value, you.value, change);
+                    //   setRGB(x, y, color);
+                }
+                you.squirm();
+                // j++
+            }
+            i.recoil();
+            i++;
+        }
+        return the_system;
+    */
 
 
     private World hivemind() {
@@ -264,7 +321,7 @@ public class StaticPanel extends JPanel {
         return the_system;
     }
 
-
+/*  V1
     private World snowCrash() {
         int boundaries = hard();
         int limits = strict();
@@ -304,7 +361,7 @@ public class StaticPanel extends JPanel {
         }
         return the_system;
     }
-
+*/
 
 }
 

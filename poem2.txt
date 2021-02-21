@@ -1,104 +1,104 @@
 [
    {
       "word":"",
-      "duration":15,
+      "duration":30,
       "effect":"black"
    },
    {
       "word":"chaos",
-      "duration":15,
+      "duration":30,
       "effect":"static"
    },
    {
       "word":"run_crowns",
-      "duration":15,
+      "duration":30,
       "effect":"static"
    },
    {
       "word":"coffin",
-      "duration":15,
+      "duration":30,
       "effect":"fade"
    },
    {
       "word":"slumbering_giants",
-      "duration":15,
+      "duration":30,
       "effect":"static"
    },
    {
       "word":"idols",
-      "duration":15,
+      "duration":30,
       "effect":"fade"
    },
    {
       "word":"ossified",
-      "duration":15,
+      "duration":30,
       "effect":"static"
    },
    {
       "word":"calcified",
-      "duration":15,
+      "duration":30,
       "effect":"fade"
    },
    {
       "word":"sibilation",
-      "duration":15,
+      "duration":30,
       "effect":"static"
    },
    {
       "word":"cacophony",
-      "duration":15,
+      "duration":30,
       "effect":"static"
    },
    {
       "word":"scream",
-      "duration":15,
+      "duration":30,
       "effect":"fade"
    },
    {
       "word":"shards",
-      "duration":15,
+      "duration":30,
       "effect":"fade"
    },
    {
       "word":"bleeding",
-      "duration":15,
+      "duration":30,
       "effect":"static"
    },
    {
       "word":"ending",
-      "duration":15,
+      "duration":30,
       "effect":"fade"
    },
    {
       "word":"run",
-      "duration":15,
+      "duration":30,
       "effect":"static"
    },
    {
       "word":"gaussian_path",
-      "duration":15,
+      "duration":30,
       "effect":"static"
    },
    {
       "word":"run",
-      "duration":15,
+      "duration":30,
       "effect":"fade"
    },
    {
       "word":"run",
-      "duration":15,
+      "duration":30,
       "effect":"static",
       "flash":"white"
    },
    {
       "word":"run",
-      "duration":15,
+      "duration":30,
       "effect":"static",
       "flash":"white"
    },
    {
       "word":"run",
-      "duration":15,
+      "duration":30,
       "effect":"static",
       "flash":"white"
    },
@@ -120,23 +120,23 @@
       "effect":"white_fade"
    },
    {
-      "word":"alabster_ruins",
-      "duration":15,
+      "word":"alabaster_ruins",
+      "duration":30,
       "effect":"white_static"
    },
    {
       "word":"snow",
-      "duration":15,
+      "duration":30,
       "effect":"static"
    },
    {
       "word":"drop",
-      "duration":15,
+      "duration":30,
       "effect":"static"
    },
    {
       "word":"surrender",
-      "duration":15,
+      "duration":30,
       "effect":"static"
    }
 ]

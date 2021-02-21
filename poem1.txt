@@ -6,24 +6,34 @@
          "effect":"static"
       },
       {
+               "word":"test",
+               "duration":15,
+               "effect":"static"
+       },
+      {
          "word":"system",
-         "duration":15,
+         "duration":60,
          "effect":"fade"
       },
       {
          "word":"",
-         "duration":15,
+         "duration":60,
          "effect":"static",
          "flash":"white"
       },
       {
          "word":"fading",
-         "duration":15,
+         "duration":30,
          "effect":"static"
       },
       {
          "word":"",
-         "duration":15,
+         "duration":30,
          "effect":"black"
-      }
+      },
+      {
+             "word":"alabaster_ruins",
+             "duration":30,
+             "effect":"white_static"
+       }
    ]

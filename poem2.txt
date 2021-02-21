@@ -161,12 +161,12 @@
    },
    {
       "word":"empresses",
-      "duration":20,
+      "duration":40,
       "effect":"white_static"
    },
    {
       "word":"alabaster_ruins",
-      "duration":30,
+      "duration":40,
       "effect":"white_static"
    },
    {
@@ -183,5 +183,10 @@
       "word":"surrender",
       "duration":30,
       "effect":"static"
+   },
+  {
+       "word":"",
+       "duration":60,
+       "effect":"black"
    }
 ]

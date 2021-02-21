@@ -1,18 +1,29 @@
-system
-propagate
-boundaries
-i = new
-thread
-larval
-chitinous
-chrysalis
-touch_change
-system_change
-feeding
-system
-feeding
-feeding
-feeding
-squirm
-recoil
-return
+
+   [
+      {
+         "word":"",
+         "duration":15,
+         "effect":"static"
+      },
+      {
+         "word":"system",
+         "duration":15,
+         "effect":"fade"
+      },
+      {
+         "word":"",
+         "duration":15,
+         "effect":"static",
+         "flash":"white"
+      },
+      {
+         "word":"fading",
+         "duration":15,
+         "effect":"static"
+      },
+      {
+         "word":"",
+         "duration":15,
+         "effect":"black"
+      }
+   ]

@@ -6,11 +6,22 @@
 package com.company;
 
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Type;
+
+import java.util.ArrayList;
 
 import java.awt.*;
 import javax.swing.JFrame;
 import java.awt.Toolkit;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonSyntaxException;
 
 public class MyRunnable implements Runnable {
     private int size;
@@ -23,7 +34,7 @@ public class MyRunnable implements Runnable {
     private Float volume;
 
     public MyRunnable(int poem, int mode, int size, int pause, int font_size, int speed, Boolean streak, Float volume) {
-        this.word_file = "poem" + Integer.toString(poem) + ".txt";
+        this.word_file = "poem" + Integer.toString(poem);
         this.mode = mode;
         this.size = size;
         this.pause = pause;
@@ -50,7 +61,14 @@ public class MyRunnable implements Runnable {
     public void run() {
 
         Font font = getFont(this.font_size);
-        var panel = new StaticPanel(this.word_file, this.mode, this.size, this.pause, this.font_size, font, this.speed, this.streak);
+
+        ArrayList<Effect> words = initializePoem(this.word_file + ".txt");
+
+        for(Effect word : words) {
+            System.out.println(word.getWord());
+        }
+
+        var panel = new StaticPanel(this.word_file + "-words.txt", this.mode, this.size, this.pause, this.font_size, font, this.speed, this.streak);
         panel.setBackground(Color.WHITE);
         var frame = new FullScreenJFrame(this.volume);
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
@@ -60,5 +78,35 @@ public class MyRunnable implements Runnable {
         frame.setVisible(true);
     }
 
+    public ArrayList<Effect> initializePoem(String word_file) {
+
+        try {
+            FileReader reader = new FileReader(word_file);
+            GsonBuilder builder = new GsonBuilder();
+            builder.setPrettyPrinting();
+
+            Gson gson = builder.create();
+
+            Type effectListType = new TypeToken<ArrayList<Effect>>(){}.getType();
+
+            ArrayList<Effect> poem = gson.fromJson(reader, effectListType);
+
+            return poem;
+
+         } catch (FileNotFoundException e) {
+            System.out.println("File " + word_file + " not found.");
+            e.printStackTrace();
+            System.exit(1);
+        } catch (JsonIOException jie) {
+            System.out.println("Error reading from file: " + word_file);
+            jie.printStackTrace();
+            System.exit(1);
+        } catch (JsonSyntaxException jse) {
+            System.out.println("Error reading from file: " + word_file);
+            jse.printStackTrace();
+            System.exit(1);
+        }
+        return null;
+    }
 }
 

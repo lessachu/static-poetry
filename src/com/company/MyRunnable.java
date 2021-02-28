@@ -48,7 +48,7 @@ public class MyRunnable implements Runnable {
                     GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("OCR-A.ttf")));
 
-            return new Font("OCR-A", Font.BOLD, font_size);
+            return new Font("OCR A Std", Font.BOLD, font_size);
         } catch (FontFormatException | IOException ex) {
             ex.printStackTrace();
             System.out.println("Unable to load: OCR-A.ttf");

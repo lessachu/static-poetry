@@ -1,197 +1,232 @@
 [
-  {
-    "word": "",
-    "duration": 30,
-    "effect": "static"
-  },
-  {
-    "word": "system",
-    "duration": 30,
-    "effect": "static"
-  },
-  {
-    "word": "",
-    "duration": 10,
-    "effect": "static"
-  },
-  {
-    "word": "propagate",
-    "duration": 30,
-    "effect": "static"
-  },
-  {
-    "word": "",
-    "duration": 10,
-    "effect": "static"
-  },
-  {
-    "word": "boundaries",
-    "duration": 30,
-    "effect": "static"
-  },
-  {
-    "word": "",
-    "duration": 30,
-    "effect": "static"
-  },
-  {
-    "word": "i = new",
-    "duration": 60,
-    "effect": "fade"
-  },
-  {
-    "word": "",
-    "duration": 20,
-    "effect": "static"
-  },
-  {
-    "word": "thread",
-    "duration": 30,
-    "effect": "static"
-  },
-  {
-    "word": "larval",
-    "duration": 40,
-    "effect": "static"
-  },
-  {
-    "word": "",
-    "duration": 10,
-    "effect": "static"
-  },
-  {
-    "word": "chitinous",
-    "duration": 40,
-    "effect": "static"
-  },
-  {
-    "word": "",
-    "duration": 10,
-    "effect": "static"
-  },
-  {
-    "word": "chrysalis",
-    "duration": 40,
-    "effect": "static"
-  },
-  {
-    "word": "",
-    "duration": 10,
-    "effect": "static"
-  },
-  {
-    "word": "touch_change",
-    "duration": 60,
-    "effect": "white_static"
-  },
-  {
-    "word": "",
-    "duration": 10,
-    "effect": "white_static"
-  },
-  {
-    "word": "system_change",
-    "duration": 60,
-    "effect": "white_static"
-  },
-  {
-    "word": "",
-    "duration": 10,
-    "effect": "white_static"
-  },
-  {
-    "word": "",
-    "duration": 10,
-    "effect": "static"
-  },
-  {
-    "word": "feeding",
-    "duration": 30,
-    "effect": "static"
-  },
-  {
-    "word": "",
-    "duration": 5,
-    "effect": "static"
-  },
-  {
-    "word": "system",
-    "duration": 30,
-    "effect": "static"
-  },
-  {
-    "word": "",
-    "duration": 5,
-    "effect": "static"
-  },
-  {
-    "word": "feeding",
-    "duration": 30,
-    "effect": "static"
-  },
-  {
-    "word": "",
-    "duration": 2,
-    "effect": "static"
-  },
-  {
-    "word": "feeding",
-    "duration": 30,
-    "effect": "static"
-  },
-  {
-    "word": "feeding",
-    "duration": 1,
-    "effect": "white"
-  },
-  {
-    "word": "feeding",
-    "duration": 5,
-    "effect": "static"
-  },
-  {
-    "word": "",
-    "duration": 2,
-    "effect": "static"
-  },
-  {
-    "word": "feeding",
-    "duration": 30,
-    "effect": "static"
-  },
-  {
-    "word": "",
-    "duration": 1,
-    "effect": "white"
-  },
-  {
-    "word": "",
-    "duration": 30,
-    "effect": "static"
-  },
-  {
-    "word": "squirm",
-    "duration": 30,
-    "effect": "fade"
-  },
-  {
-    "word": "recoil",
-    "duration": 30,
-    "effect": "fade"
-  },
-  {
-    "word": "return",
-    "duration": 30,
-    "effect": "fade"
-  },
-  {
-    "word": "",
-    "duration": 20,
-    "effect": "static"
-  },
-  {
-    "word": "",
-    "duration": 60,
-    "effect": "black"
-  }
+   {
+      "word":"",
+      "duration":12,
+      "effect":"static"
+   },
+   {
+      "word":"system",
+      "duration":30,
+      "effect":"static"
+   },
+   {
+      "word":"",
+      "duration":9,
+      "effect":"static"
+   },
+   {
+      "word":"propagate",
+      "duration":30,
+      "effect":"static"
+   },
+   {
+      "word":"",
+      "duration":10,
+      "effect":"static"
+   },
+   {
+      "word":"boundaries",
+      "duration":24,
+      "effect":"static"
+   },
+   {
+      "word":"",
+      "duration":24,
+      "effect":"static"
+   },
+   {
+      "word":"i = new",
+      "duration":36,
+      "effect":"fade"
+   },
+   {
+      "word":"",
+      "duration":30,
+      "effect":"static"
+   },
+   {
+      "word":"thread",
+      "duration":28,
+      "effect":"fade"
+   },
+   {
+      "word":"",
+      "duration":18,
+      "effect":"static"
+   },
+   {
+      "word":"larval",
+      "duration":24,
+      "effect":"fade"
+   },
+   {
+      "word":"",
+      "duration":16,
+      "effect":"static"
+   },
+   {
+      "word":"chitinous",
+      "duration":24,
+      "effect":"fade"
+   },
+   {
+      "word":"",
+      "duration":16,
+      "effect":"static"
+   },
+   {
+      "word":"chrysalis",
+      "duration":24,
+      "effect":"fade"
+   },
+   {
+      "word":"",
+      "duration":18,
+      "effect":"static"
+   },
+   {
+      "word":"touch_change",
+      "duration":36,
+      "effect":"fade"
+   },
+   {
+      "word":"",
+      "duration":16,
+      "effect":"static"
+   },
+   {
+      "word":"system_change",
+      "duration":36,
+      "effect":"fade"
+   },
+   {
+      "word":"",
+      "duration":12,
+      "effect":"static"
+   },
+   {
+      "word":"",
+      "duration":1,
+      "effect":"white"
+   },
+   {
+      "word":"",
+      "duration":12,
+      "effect":"static"
+   },
+   {
+      "word":"feeding",
+      "duration":12,
+      "effect":"static"
+   },
+   {
+      "word":"",
+      "duration":1,
+      "effect":"static"
+   },
+   {
+      "word":"system",
+      "duration":18,
+      "effect":"static"
+   },
+   {
+      "word":"",
+      "duration":1,
+      "effect":"static"
+   },
+   {
+      "word":"feeding",
+      "duration":18,
+      "effect":"static"
+   },
+   {
+      "word":"",
+      "duration":1,
+      "effect":"static"
+   },
+   {
+      "word":"feeding",
+      "duration":18,
+      "effect":"static"
+   },
+   {
+      "word":"",
+      "duration":1,
+      "effect":"static"
+   },
+   {
+      "word":"feeding",
+      "duration":6,
+      "effect":"static"
+   },
+   {
+      "word":"feeding",
+      "duration":1,
+      "effect":"white"
+   },
+   {
+      "word":"feeding",
+      "duration":8,
+      "effect":"static"
+   },
+   {
+      "word":"",
+      "duration":1,
+      "effect":"static"
+   },
+   {
+      "word":"feeding",
+      "duration":18,
+      "effect":"static"
+   },
+   {
+      "word":"",
+      "duration":4,
+      "effect":"static"
+   },
+   {
+      "word":"",
+      "duration":1,
+      "effect":"white"
+   },
+   {
+      "word":"",
+      "duration":24,
+      "effect":"static"
+   },
+   {
+      "word":"squirm",
+      "duration":27,
+      "effect":"fade"
+   },
+   {
+      "word":"",
+      "duration":15,
+      "effect":"static"
+   },
+   {
+      "word":"recoil",
+      "duration":27,
+      "effect":"fade"
+   },
+   {
+      "word":"",
+      "duration":15,
+      "effect":"static"
+   },
+   {
+      "word":"return",
+      "duration":27,
+      "effect":"fade"
+   },
+   {
+      "word":"",
+      "duration":12,
+      "effect":"static"
+   },
+   {
+      "word":"",
+      "duration":24,
+      "effect":"black"
+   }
 ]
